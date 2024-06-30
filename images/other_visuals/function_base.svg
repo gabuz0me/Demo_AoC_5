@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg width="800mm" height="800mm" viewBox="0 0 800 800" version="1.1" id="svg5"
+  inkscape:version="1.2.2 (732a01da63, 2022-12-09)" sodipodi:docname="function_base.svg" xml:space="preserve"
+  xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+  xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" xmlns:xlink="http://www.w3.org/1999/xlink"
+  xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview id="namedview7" pagecolor="#ffffff" bordercolor="#999999" borderopacity="1"
+    inkscape:showpageshadow="0" inkscape:pageopacity="0" inkscape:pagecheckerboard="0" inkscape:deskcolor="#d1d1d1"
+    inkscape:document-units="mm" showgrid="false" inkscape:zoom="0.5" inkscape:cx="348" inkscape:cy="1477"
+    inkscape:window-width="3200" inkscape:window-height="1722" inkscape:window-x="3192" inkscape:window-y="-8"
+    inkscape:window-maximized="1" inkscape:current-layer="layer1" showguides="false">
+    <inkscape:grid type="xygrid" id="grid132" />
+    <sodipodi:guide position="150,480" orientation="1,0" id="guide2487" inkscape:locked="false" />
+    <sodipodi:guide position="650,510" orientation="1,0" id="guide2489" inkscape:locked="false" />
+    <sodipodi:guide position="400,400" orientation="0,-1" id="guide2491" inkscape:locked="false" />
+    <sodipodi:guide position="400,490" orientation="0,-1" id="guide2493" inkscape:locked="false" />
+    <sodipodi:guide position="79.999999,310" orientation="0,-1" id="guide2596" inkscape:locked="false" />
+    <sodipodi:guide position="150,580" orientation="0,-1" id="guide2619" inkscape:locked="false" />
+    <sodipodi:guide position="89.999999,220" orientation="0,-1" id="guide2621" inkscape:locked="false" />
+  </sodipodi:namedview>
+  <defs id="defs2">
+    <style id="style2176">
+      <![CDATA[
+      .base {
+        fill: #ffffff;
+        stroke: #000000;
+        stroke-width: 5;
+      }
+
+      .out {
+        fill: #f44747;
+      }
+
+      .in {
+        fill: #16b673;
+      }
+
+      .function {
+        fill: #16a3b6;
+      }
+
+      .fx {
+        /* fill: #7060EB; */
+        fill: #d5971a;
+        stroke: #000000;
+        stroke-width: 15 !important;
+      }
+      ]]>
+    </style>
+  </defs>
+  <g inkscape:label="Calque 1" inkscape:groupmode="layer" id="layer1" class="base">
+    <rect style="display:none;fill:#07273b;fill-rule:evenodd;stroke-width:0.450001;stroke-miterlimit:1.5" id="rect338"
+      width="800" height="800" x="0" y="0" sodipodi:insensitive="true" inkscape:label="Background" />
+    <g inkscape:groupmode="layer" id="layer5" inkscape:label="Outs">
+      <g id="g2737" inkscape:label="3" style="display:none">
+        <use x="0" y="0" xlink:href="#use2672" id="use2688" style="display:inline" />
+        <use x="0" y="0" xlink:href="#use2672" id="use2688-7" style="display:inline" transform="translate(0,180)" />
+        <use x="0" y="0" xlink:href="#use2672" id="use2688-6" style="display:inline" transform="translate(0,-180)" />
+      </g>
+      <g id="g2737-7" inkscape:label="2" style="display:none">
+        <use x="0" y="0" xlink:href="#use2672" id="use2688-7-2" style="display:inline" transform="translate(0,90)" />
+        <use x="0" y="0" xlink:href="#use2672" id="use2688-6-0" style="display:inline" transform="translate(0,-90)" />
+      </g>
+      <g id="g2737-8" inkscape:label="1" style="display:none">
+        <use x="0" y="0" xlink:href="#use2672" id="use2688-74" style="display:inline" />
+      </g>
+    </g>
+    <g id="g2268" inkscape:label="function" class="function">
+      <path d="M 240,719.99998 H 359.99999 L 560,670 V 130 L 359.99999,79.999998 H 240 Z" id="path2011"
+        sodipodi:nodetypes="ccccccc" />
+      <path style="fill:none;" d="M 359.99999,79.999998 V 719.99998" id="path2013" />
+      <path style="fill:none;" d="M 240.00001,720 H 360 L 560,670 V 130 L 359.99999,80 H 240 Z" id="path2011-2"
+        sodipodi:nodetypes="ccccccc" />
+    </g>
+    <g inkscape:groupmode="layer" id="layer4" inkscape:label="Ins" style="display:inline">
+      <g id="g2627" inkscape:label="3" style="display:none" sodipodi:insensitive="true">
+        <use x="0" y="0" xlink:href="#g2084-20" id="use2623" style="display:inline" transform="translate(0,180)" />
+        <use x="0" y="0" xlink:href="#g2084-20" id="use2625" style="display:inline" transform="translate(0,-180)" />
+        <use x="0" y="0" xlink:href="#g2084-20" id="use2535-5" style="display:inline" inkscape:label="1" />
+      </g>
+      <g id="g2600" inkscape:label="2" style="display:none" sodipodi:insensitive="true">
+        <use x="0" y="0" xlink:href="#g2084-20" id="use2593" style="display:inline" transform="translate(0,90)" />
+        <use x="0" y="0" xlink:href="#g2084-20" id="use2589" style="display:inline" transform="translate(0,-90)" />
+      </g>
+      <g id="g2605" inkscape:label="1" style="display:none" sodipodi:insensitive="true">
+        <use x="0" y="0" xlink:href="#g2084-20" id="use2535" style="display:inline" inkscape:label="1"
+          sodipodi:insensitive="true" />
+      </g>
+    </g>
+    <g inkscape:groupmode="layer" id="layer3" inkscape:label="Base objects" style="display:none">
+      <g id="g2084-20" transform="translate(70)" inkscape:label="In" sodipodi:insensitive="true" class="in">
+        <path style="stroke:none;" d="m 120,319.99999 v 160 l 120,-9.99998 V 330 Z" id="path2072-12" />
+        <ellipse id="path1959-1" cx="120" cy="400" rx="40" ry="80" />
+        <path id="path1961-0"
+          d="m 239.99982,470.00025 c 16.5687,3.1e-4 30.00033,-31.34008 30.00024,-70.00038 -3e-5,-38.66009 -13.43163,-70.00017 -30.00024,-69.99986"
+          sodipodi:nodetypes="csc" />
+        <path d="M 120,319.99999 240,330" id="path2075-89" />
+        <path d="m 240,470.00001 -120,9.99998" id="path2077-9" />
+      </g>
+      <g id="use2672" transform="matrix(-1,0,0,1,730,0)" inkscape:label="Out" class="out">
+        <ellipse id="ellipse2676" cx="120" cy="400" rx="40" ry="80" />
+        <path style="stroke:none;" d="m 120,319.99999 v 160 l 120,-9.99998 V 330 Z" id="path2678"
+          transform="translate(-1.25e-6)" />
+        <path id="path2680"
+          d="m 239.99982,470.00025 c 16.5687,3.1e-4 30.00033,-31.34008 30.00024,-70.00038 -3e-5,-38.66009 -13.43163,-70.00017 -30.00024,-69.99986"
+          sodipodi:nodetypes="csc" />
+        <path d="M 120,319.99999 240,330" id="path2682" />
+        <path d="m 240,470.00001 -120,9.99998" id="path2684" />
+      </g>
+    </g>
+    <g id="g1616" transform="matrix(0.1631386,0,0,-0.1631386,387.26076,442.90546)" inkscape:label="fx" class="fx">
+      <path id="use931"
+        d="m 118,-162 q 2,0 6,-2 4,-2 11,-3 7,-1 12,-1 13,0 24,13 11,13 16,29 10,27 34,153 24,126 46,240 22,114 22,115 v 3 h -47 q -47,0 -50,2 -4,3 -4,10 l 7,28 q 2,5 8,5 6,0 47,1 48,0 48,1 0,2 9,50 9,48 12,58 37,165 146,165 37,-2 61,-22 24,-20 24,-53 0,-36 -21,-52 -21,-16 -42,-17 -44,0 -44,42 0,19 11,33 11,14 24,21 l 9,5 q -16,6 -30,6 -12,0 -23,-10 -11,-10 -15,-28 -7,-29 -16,-78 -9,-49 -16,-83 -7,-34 -7,-36 0,-2 55,-2 45,0 52,-1 7,-1 11,-6 1,-4 -2,-17 -3,-13 -5,-16 -2,-5 -9,-5 -7,0 -54,-1 H 372 L 349,263 Q 301,15 282,-47 q -27,-85 -70,-126 -37,-32 -73,-32 -32,0 -58,19 -26,19 -26,54 0,37 21,54 21,17 42,17 44,0 44,-42 0,-19 -11,-33 -11,-14 -24,-21 z" />
+      <path id="use933"
+        d="m 376.04862,53.740115 q 4.94975,29.698485 38.18377,68.589355 33.23401,38.89088 82.02438,39.59798 24.74874,0 45.25484,-12.72792 20.50609,-12.72792 30.40559,-31.8198 29.69848,44.54772 71.41778,44.54772 26.16295,0 45.25484,-15.55635 19.09188,-15.55635 19.79899,-41.7193 0,-20.506093 -9.8995,-33.234015 -9.89949,-12.727922 -19.09188,-15.556349 -9.19239,-2.828427 -16.26346,-2.828427 -13.43503,0 -21.92031,7.778174 -8.48528,7.778175 -8.48528,20.506097 0,32.52691 35.35534,44.54773 -7.77817,9.19239 -28.28427,9.19239 -9.19239,0 -13.43503,-1.41422 -26.87006,-11.31371 -39.59798,-46.669046 -42.42641,-156.270599 -42.42641,-182.433549 0,-19.798995 11.31371,-28.284275 11.31371,-8.48528 24.74874,-8.48528 26.16295,0 51.61879,23.33453 25.45585,23.334519 34.64824,57.275645 2.12132,7.071068 4.24264,7.778175 2.12132,0.707106 11.31371,1.414213 h 2.82842 q 10.6066,0 10.6066,-5.656854 0,-0.707107 -1.41421,-7.778175 -11.31371,-40.305086 -43.84062,-71.417784 -32.52691,-31.1127 -75.66043,-31.1127 -49.49747,0 -74.95331,44.54773 -28.99138,-43.84062 -66.46804,-43.84062 h -4.24264 q -34.64823,0 -49.49748,18.38477 -14.84924,18.38478 -15.55635,38.89088 0,22.627414 13.43503,36.76955 13.43503,14.142135 31.81981,14.142135 30.40559,0 30.40559,-29.698484 0,-14.142136 -8.48528,-24.748741 -8.48528,-10.6066 -16.26346,-14.14213 -7.77817,-3.53554 -9.19239,-3.53554 l -2.12132,-0.7071 q 0,-0.70711 4.24264,-2.82843 4.24265,-2.12132 11.31371,-4.94975 7.07107,-2.82842 13.43503,-2.12132 25.45585,0 43.84062,31.81981 6.36396,11.313706 16.26346,48.083258 9.89949,36.769553 19.79899,76.367533 9.89949,39.597979 11.31371,46.669047 3.53553,19.091883 3.53553,27.577165 0,19.798987 -10.6066,28.284267 -10.6066,8.48529 -24.04163,8.48529 -28.28427,0 -53.03301,-22.62742 Q 414.93949,89.802561 405.04,54.447222 q -1.41422,-6.363961 -3.53554,-7.071068 -2.12132,-0.707106 -11.3137,-1.414213 h -9.8995 q -4.24264,4.24264 -4.24264,7.778174 z" />
+    </g>
+  </g>
+</svg>

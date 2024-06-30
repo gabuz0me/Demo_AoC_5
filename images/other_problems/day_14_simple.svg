@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+     width="800" height="800" viewBox="0 0 10 10">
+<defs>
+<rect x="0.1" y="0.1" width="0.8" height="0.8" fill="grey" stroke="black" stroke-width="0.05" id="d0" />
+</defs>
+<rect x="-1" y="-1" width="11" height="11" fill="white" />
+<use xlink:href="#d0" x="0" y="8" />
+<use xlink:href="#d0" x="0" y="9" />
+<use xlink:href="#d0" x="2" y="5" />
+<use xlink:href="#d0" x="3" y="3" />
+<use xlink:href="#d0" x="4" y="1" />
+<use xlink:href="#d0" x="5" y="0" />
+<use xlink:href="#d0" x="5" y="2" />
+<use xlink:href="#d0" x="5" y="6" />
+<use xlink:href="#d0" x="5" y="8" />
+<use xlink:href="#d0" x="5" y="9" />
+<use xlink:href="#d0" x="6" y="2" />
+<use xlink:href="#d0" x="6" y="8" />
+<use xlink:href="#d0" x="7" y="5" />
+<use xlink:href="#d0" x="7" y="8" />
+<use xlink:href="#d0" x="8" y="4" />
+<use xlink:href="#d0" x="9" y="1" />
+<use xlink:href="#d0" x="9" y="5" />
+<g fill="red" stroke="black" stroke-width="0.05">
+<circle cx="5.5" cy="4.5" r="0.45">
+<animate attributeName="cx" dur="10s" values="5.5;5.5;5.5;5.5;6.5;6.5;2.5;2.5;6.5;6.5;6.5;6.5;9.5;9.5;8.5;8.5;9.5;9.5;8.5;8.5;9.5;9.5;8.5;8.5;9.5;9.5;8.5;8.5;9.5" repeatCount="indefinite" />
+<animate attributeName="cy" dur="10s" values="4.5;3.5;3.5;5.5;5.5;4.5;4.5;4.5;4.5;3.5;3.5;6.5;6.5;6.5;6.5;8.5;8.5;8.5;8.5;9.5;9.5;8.5;8.5;9.5;9.5;8.5;8.5;9.5;9.5" repeatCount="indefinite" />
+</circle>
+<circle cx="6.5" cy="5.5" r="0.45">
+<animate attributeName="cx" dur="10s" values="6.5;6.5;2.5;2.5;6.5;6.5;6.5;6.5;9.5;9.5;8.5;8.5;9.5;9.5;8.5;8.5;9.5;9.5;6.5;6.5;8.5;8.5;7.5;7.5;8.5;8.5;8.5;8.5;9.5" repeatCount="indefinite" />
+<animate attributeName="cy" dur="10s" values="5.5;4.5;4.5;4.5;4.5;3.5;3.5;6.5;6.5;6.5;6.5;8.5;8.5;8.5;8.5;9.5;9.5;9.5;9.5;9.5;9.5;6.5;6.5;7.5;7.5;5.5;5.5;8.5;8.5" repeatCount="indefinite" />
+</circle>
+<circle cx="6.5" cy="4.5" r="0.45">
+<animate attributeName="cx" dur="10s" values="6.5;6.5;6.5;6.5;9.5;9.5;8.5;8.5;9.5;9.5;8.5;8.5;9.5;9.5;6.5;6.5;8.5;8.5;7.5;7.5;8.5;8.5;8.5;8.5;9.5;9.5;7.5;7.5;9.5" repeatCount="indefinite" />
+<animate attributeName="cy" dur="10s" values="4.5;3.5;3.5;6.5;6.5;6.5;6.5;8.5;8.5;8.5;8.5;9.5;9.5;9.5;9.5;9.5;9.5;6.5;6.5;7.5;7.5;5.5;5.5;7.5;7.5;6.5;6.5;7.5;7.5" repeatCount="indefinite" />
+</circle>
+<circle cx="8.5" cy="1.5" r="0.45">
+<animate attributeName="cx" dur="10s" values="8.5;8.5;7.5;7.5;7.5;7.5;6.5;6.5;8.5;8.5;7.5;7.5;7.5;7.5;6.5;6.5;8.5;8.5;7.5;7.5;7.5;7.5;6.5;6.5;8.5;8.5;7.5;7.5;7.5" repeatCount="indefinite" />
+<animate attributeName="cy" dur="10s" values="1.5;0.5;0.5;4.5;4.5;0.5;0.5;1.5;1.5;0.5;0.5;4.5;4.5;0.5;0.5;1.5;1.5;0.5;0.5;4.5;4.5;0.5;0.5;1.5;1.5;0.5;0.5;4.5;4.5" repeatCount="indefinite" />
+</circle>
+<circle cx="9.5" cy="7.5" r="0.45">
+<animate attributeName="cx" dur="10s" values="9.5;9.5;0.5;0.5;7.5;7.5;6.5;6.5;7.5;7.5;6.5;6.5;7.5;7.5;6.5;6.5;7.5;7.5;6.5;6.5;7.5;7.5;6.5;6.5;7.5;7.5;6.5;6.5;8.5" repeatCount="indefinite" />
+<animate attributeName="cy" dur="10s" values="7.5;7.5;7.5;7.5;7.5;6.5;6.5;7.5;7.5;6.5;6.5;7.5;7.5;6.5;6.5;7.5;7.5;6.5;6.5;7.5;7.5;6.5;6.5;7.5;7.5;6.5;6.5;7.5;7.5" repeatCount="indefinite" />
+</circle>
+<circle cx="4.5" cy="8.5" r="0.45">
+<animate attributeName="cx" dur="10s" values="4.5;4.5;4.5;4.5;4.5;4.5;1.5;1.5;3.5;3.5;0.5;0.5;4.5;4.5;0.5;0.5;6.5;6.5;5.5;5.5;6.5;6.5;2.5;2.5;6.5;6.5;6.5;6.5;9.5" repeatCount="indefinite" />
+<animate attributeName="cy" dur="10s" values="8.5;3.5;3.5;9.5;9.5;4.5;4.5;9.5;9.5;4.5;4.5;6.5;6.5;2.5;2.5;4.5;4.5;3.5;3.5;5.5;5.5;4.5;4.5;4.5;4.5;3.5;3.5;6.5;6.5" repeatCount="indefinite" />
+</circle>
+<circle cx="7.5" cy="4.5" r="0.45">
+<animate attributeName="cx" dur="10s" values="7.5;7.5;6.5;6.5;8.5;8.5;7.5;7.5;7.5;7.5;6.5;6.5;8.5;8.5;7.5;7.5;7.5;7.5;6.5;6.5;8.5;8.5;7.5;7.5;7.5;7.5;6.5;6.5;8.5" repeatCount="indefinite" />
+<animate attributeName="cy" dur="10s" values="4.5;0.5;0.5;1.5;1.5;0.5;0.5;4.5;4.5;0.5;0.5;1.5;1.5;0.5;0.5;4.5;4.5;0.5;0.5;1.5;1.5;0.5;0.5;4.5;4.5;0.5;0.5;1.5;1.5" repeatCount="indefinite" />
+</circle>
+<circle cx="3.5" cy="9.5" r="0.45">
+<animate attributeName="cx" dur="10s" values="3.5;3.5;0.5;0.5;1.5;1.5;0.5;0.5;5.5;5.5;5.5;5.5;6.5;6.5;1.5;1.5;2.5;2.5;0.5;0.5;4.5;4.5;0.5;0.5;5.5;5.5;5.5;5.5;6.5" repeatCount="indefinite" />
+<animate attributeName="cy" dur="10s" values="9.5;4.5;4.5;5.5;5.5;0.5;0.5;4.5;4.5;3.5;3.5;5.5;5.5;4.5;4.5;9.5;9.5;6.5;6.5;6.5;6.5;2.5;2.5;4.5;4.5;3.5;3.5;5.5;5.5" repeatCount="indefinite" />
+</circle>
+<circle cx="9.5" cy="6.5" r="0.45">
+<animate attributeName="cx" dur="10s" values="9.5;9.5;7.5;7.5;9.5;9.5;0.5;0.5;6.5;6.5;3.5;3.5;3.5;3.5;0.5;0.5;1.5;1.5;0.5;0.5;2.5;2.5;1.5;1.5;4.5;4.5;4.5;4.5;4.5" repeatCount="indefinite" />
+<animate attributeName="cy" dur="10s" values="6.5;6.5;6.5;7.5;7.5;7.5;7.5;7.5;7.5;5.5;5.5;9.5;9.5;4.5;4.5;5.5;5.5;0.5;0.5;3.5;3.5;0.5;0.5;8.5;8.5;3.5;3.5;9.5;9.5" repeatCount="indefinite" />
+</circle>
+<circle cx="4.5" cy="6.5" r="0.45">
+<animate attributeName="cx" dur="10s" values="4.5;4.5;0.5;0.5;5.5;5.5;5.5;5.5;6.5;6.5;2.5;2.5;6.5;6.5;6.5;6.5;9.5;9.5;8.5;8.5;9.5;9.5;0.5;0.5;6.5;6.5;3.5;3.5;3.5" repeatCount="indefinite" />
+<animate attributeName="cy" dur="10s" values="6.5;2.5;2.5;4.5;4.5;3.5;3.5;5.5;5.5;4.5;4.5;4.5;4.5;3.5;3.5;6.5;6.5;6.5;6.5;8.5;8.5;7.5;7.5;7.5;7.5;5.5;5.5;9.5;9.5" repeatCount="indefinite" />
+</circle>
+<circle cx="2.5" cy="3.5" r="0.45">
+<animate attributeName="cx" dur="10s" values="2.5;2.5;1.5;1.5;4.5;4.5;4.5;4.5;4.5;4.5;1.5;1.5;2.5;2.5;0.5;0.5;4.5;4.5;0.5;0.5;6.5;6.5;5.5;5.5;6.5;6.5;2.5;2.5;6.5" repeatCount="indefinite" />
+<animate attributeName="cy" dur="10s" values="3.5;0.5;0.5;8.5;8.5;3.5;3.5;9.5;9.5;4.5;4.5;9.5;9.5;6.5;6.5;6.5;6.5;2.5;2.5;4.5;4.5;3.5;3.5;5.5;5.5;4.5;4.5;4.5;4.5" repeatCount="indefinite" />
+</circle>
+<circle cx="4.5" cy="9.5" r="0.45">
+<animate attributeName="cx" dur="10s" values="4.5;4.5;1.5;1.5;3.5;3.5;0.5;0.5;4.5;4.5;0.5;0.5;1.5;1.5;0.5;0.5;2.5;2.5;1.5;1.5;4.5;4.5;4.5;4.5;4.5;4.5;1.5;1.5;2.5" repeatCount="indefinite" />
+<animate attributeName="cy" dur="10s" values="9.5;4.5;4.5;9.5;9.5;4.5;4.5;6.5;6.5;2.5;2.5;5.5;5.5;0.5;0.5;3.5;3.5;0.5;0.5;8.5;8.5;3.5;3.5;9.5;9.5;4.5;4.5;9.5;9.5" repeatCount="indefinite" />
+</circle>
+<circle cx="7.5" cy="7.5" r="0.45">
+<animate attributeName="cx" dur="10s" values="7.5;7.5;6.5;6.5;8.5;8.5;8.5;8.5;9.5;9.5;0.5;0.5;6.5;6.5;3.5;3.5;3.5;3.5;0.5;0.5;1.5;1.5;0.5;0.5;2.5;2.5;1.5;1.5;4.5" repeatCount="indefinite" />
+<animate attributeName="cy" dur="10s" values="7.5;6.5;6.5;7.5;7.5;5.5;5.5;7.5;7.5;7.5;7.5;7.5;7.5;5.5;5.5;9.5;9.5;4.5;4.5;5.5;5.5;0.5;0.5;3.5;3.5;0.5;0.5;8.5;8.5" repeatCount="indefinite" />
+</circle>
+<circle cx="8.5" cy="7.5" r="0.45">
+<animate attributeName="cx" dur="10s" values="8.5;8.5;8.5;8.5;9.5;9.5;8.5;8.5;9.5;9.5;6.5;6.5;8.5;8.5;7.5;7.5;8.5;8.5;8.5;8.5;9.5;9.5;8.5;8.5;9.5;9.5;0.5;0.5;7.5" repeatCount="indefinite" />
+<animate attributeName="cy" dur="10s" values="7.5;5.5;5.5;8.5;8.5;8.5;8.5;9.5;9.5;9.5;9.5;9.5;9.5;6.5;6.5;7.5;7.5;5.5;5.5;7.5;7.5;6.5;6.5;8.5;8.5;7.5;7.5;7.5;7.5" repeatCount="indefinite" />
+</circle>
+<circle cx="1.5" cy="5.5" r="0.45">
+<animate attributeName="cx" dur="10s" values="1.5;1.5;0.5;0.5;2.5;2.5;1.5;1.5;4.5;4.5;4.5;4.5;4.5;4.5;4.5;4.5;4.5;4.5;4.5;4.5;4.5;4.5;1.5;1.5;2.5;2.5;0.5;0.5;4.5" repeatCount="indefinite" />
+<animate attributeName="cy" dur="10s" values="5.5;0.5;0.5;3.5;3.5;0.5;0.5;8.5;8.5;3.5;3.5;9.5;9.5;3.5;3.5;9.5;9.5;3.5;3.5;9.5;9.5;4.5;4.5;9.5;9.5;6.5;6.5;6.5;6.5" repeatCount="indefinite" />
+</circle>
+<circle cx="9.5" cy="8.5" r="0.45">
+<animate attributeName="cx" dur="10s" values="9.5;9.5;8.5;8.5;9.5;9.5;6.5;6.5;8.5;8.5;7.5;7.5;8.5;8.5;8.5;8.5;9.5;9.5;0.5;0.5;6.5;6.5;3.5;3.5;3.5;3.5;0.5;0.5;1.5" repeatCount="indefinite" />
+<animate attributeName="cy" dur="10s" values="8.5;8.5;8.5;9.5;9.5;9.5;9.5;9.5;9.5;6.5;6.5;7.5;7.5;5.5;5.5;7.5;7.5;7.5;7.5;7.5;7.5;5.5;5.5;9.5;9.5;4.5;4.5;5.5;5.5" repeatCount="indefinite" />
+</circle>
+<circle cx="2.5" cy="9.5" r="0.45">
+<animate attributeName="cx" dur="10s" values="2.5;2.5;0.5;0.5;4.5;4.5;0.5;0.5;1.5;1.5;0.5;0.5;5.5;5.5;5.5;5.5;6.5;6.5;1.5;1.5;2.5;2.5;0.5;0.5;4.5;4.5;0.5;0.5;5.5" repeatCount="indefinite" />
+<animate attributeName="cy" dur="10s" values="9.5;6.5;6.5;6.5;6.5;2.5;2.5;5.5;5.5;0.5;0.5;4.5;4.5;3.5;3.5;5.5;5.5;4.5;4.5;9.5;9.5;6.5;6.5;6.5;6.5;2.5;2.5;4.5;4.5" repeatCount="indefinite" />
+</circle>
+<circle cx="9.5" cy="9.5" r="0.45">
+<animate attributeName="cx" dur="10s" values="9.5;9.5;6.5;6.5;8.5;8.5;7.5;7.5;8.5;8.5;8.5;8.5;9.5;9.5;0.5;0.5;6.5;6.5;3.5;3.5;3.5;3.5;0.5;0.5;1.5;1.5;0.5;0.5;2.5" repeatCount="indefinite" />
+<animate attributeName="cy" dur="10s" values="9.5;9.5;9.5;9.5;9.5;6.5;6.5;7.5;7.5;5.5;5.5;7.5;7.5;7.5;7.5;7.5;7.5;5.5;5.5;9.5;9.5;4.5;4.5;5.5;5.5;0.5;0.5;3.5;3.5" repeatCount="indefinite" />
+</circle>
+</g>
+</svg>
