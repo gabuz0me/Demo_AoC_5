@@ -233,7 +233,7 @@ int main(int argc, char* argv[])
 
 <tr>
     <td><img src="https://c.tenor.com/n36qbwYGTOAAAAAd/tenor.gif"></td>
-    <td><img src="https://c.tenor.com/kq7GyBPPIj0AAAAd/tenor.gif"></td>
+    <td><img src="https://i.imgflip.com/5f4drd.gif"></td>
 </tr>
 
 <tr>
