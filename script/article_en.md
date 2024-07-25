@@ -1,4 +1,4 @@
-Version 2
+Version 3 (vidéo jusqu'à 2.1.2.1.1)
 
 ---
 
@@ -7,43 +7,43 @@ Version 2
 <!-- @import "[TOC]" {cmd="toc" depthFrom=2 depthTo=6 orderedList=false} -->
 <!-- code_chunk_output -->
 
-- [Introduction](#introduction)
-- [The day 5 problem](#the-day-5-problem)
-  - [The first part of the problem](#the-first-part-of-the-problem)
-    - [Formalization](#formalization)
-    - [Writing some code](#writing-some-code)
-      - [Python 101](#python-101)
-        - [The basics](#the-basics)
-        - [About OOP](#about-oop)
-      - [Creating the base objects](#creating-the-base-objects)
-        - [Shifters](#shifters)
-        - [Intermediate Function](#intermediate-function)
-        - [Importing the data](#importing-the-data)
-        - [Creating the final function](#creating-the-final-function)
-    - [Solving Part One](#solving-part-one)
-  - [The Second part of the problem](#the-second-part-of-the-problem)
-    - [Naive approach](#naive-approach)
-    - [Complexity](#complexity)
-      - [What is complexity?](#what-is-complexity)
-      - [Finding the complexity of our algorithm](#finding-the-complexity-of-our-algorithm)
-        - [On parallelization](#on-parallelization)
-        - [On other measures of algorithmic complexity](#on-other-measures-of-algorithmic-complexity)
-        - [Finding the complexity of our algorithm (for real)](#finding-the-complexity-of-our-algorithm-for-real)
-    - [Another perspective](#another-perspective)
-      - [The solution layed in front of our eyes since the beginning](#the-solution-layed-in-front-of-our-eyes-since-the-beginning)
-      - [Introducing ranges](#introducing-ranges)
-      - [On Complexity... again!](#on-complexity-again)
-      - [Finally, the solution \o/](#finally-the-solution-o)
-- [Conclusion](#conclusion)
-  - [Quick recap](#quick-recap)
-  - [What could have been done better?](#what-could-have-been-done-better)
-  - [Final words](#final-words)
+- [1 - Introduction](#1---introduction)
+- [2 - The day 5 problem](#2---the-day-5-problem)
+  - [2.1 - The first part of the problem](#21---the-first-part-of-the-problem)
+    - [2.1.1 - Formalization](#211---formalization)
+    - [2.1.2 - Writing some code](#212---writing-some-code)
+      - [2.1.2.1 - Python 101](#2121---python-101)
+        - [2.1.2.1.1 - The basics](#21211---the-basics)
+        - [2.1.2.1.2 - About OOP](#21212---about-oop)
+      - [2.1.2.2 - Creating the base objects](#2122---creating-the-base-objects)
+        - [2.1.2.2.1 - Shifters](#21221---shifters)
+        - [2.1.2.2.2 - Intermediate Function](#21222---intermediate-function)
+        - [2.1.2.2.3 - Importing the data](#21223---importing-the-data)
+        - [2.1.2.2.4 - Creating the final function](#21224---creating-the-final-function)
+    - [2.1.3 - Solving Part One](#213---solving-part-one)
+  - [2.2 - The Second part of the problem](#22---the-second-part-of-the-problem)
+    - [2.2.1 - Naive approach](#221---naive-approach)
+    - [2.2.2 - Complexity](#222---complexity)
+      - [2.2.2.1 - What is complexity?](#2221---what-is-complexity)
+      - [2.2.2.2 - Finding the complexity of our algorithm](#2222---finding-the-complexity-of-our-algorithm)
+        - [2.2.2.2.1 - On parallelization](#22221---on-parallelization)
+        - [2.2.2.2.2 - On other measures of algorithmic complexity](#22222---on-other-measures-of-algorithmic-complexity)
+        - [2.2.2.2.3 - Finding the complexity of our algorithm (for real)](#22223---finding-the-complexity-of-our-algorithm-for-real)
+    - [2.2.3 - Another perspective](#223---another-perspective)
+      - [2.2.3.1 - The solution layed in front of our eyes since the beginning](#2231---the-solution-layed-in-front-of-our-eyes-since-the-beginning)
+      - [2.2.3.2 - Introducing ranges](#2232---introducing-ranges)
+      - [2.2.3.3 - On Complexity... again!](#2233---on-complexity-again)
+      - [2.2.3.4 - Finally, the solution \o/](#2234---finally-the-solution-o)
+- [3 - Conclusion](#3---conclusion)
+  - [3.1 - Quick recap](#31---quick-recap)
+  - [3.2 - What could have been done better?](#32---what-could-have-been-done-better)
+  - [3.3 - Final words](#33---final-words)
 
 <!-- /code_chunk_output -->
 
 ---
 
-## Introduction
+## 1 - Introduction
 
 This video is about the beauty of problem solving, of making a computer do what you want it to do, and do so efficiently.
 
@@ -61,7 +61,7 @@ Each problem is divided in two parts. The first one can be done quite simply, yo
 
 This year, during your journey, you played cards, found your way through mazes, watched the stars, made balls roll, propagated beams through mirrors, minimized the heat loss when transporting hot lava, counted the many paths taken by metal scraps, simulated electronic circuits, built Jenga towers out of sand, and so on.
 
-To do so, you could use computer science stuff such as regexp, graph theory, automata theory, Dijkstra algorithm and mathematical tools like combinatorial analysis, the famous quadratic equation, Green's theorem to find an area given the contour, modular arithmetic, polynomial interpolation and so on.
+To do so, you could use computer science stuff such as regular expressions, graph and automata theory and mathematical tools like combinatorial analysis, the famous quadratic equation, modular arithmetic, polynomial interpolation and so on.
 
 | <img src="../images/other_problems/day_22.gif" height="400" alt="falling bricks tower"/> | <img src="../images/other_problems/day_12_L78.gif" width="600" alt="automaton"/> | <img src="../images/other_problems/day_14_simple.svg" width="400" alt="rolling balls"/> |
 |:-:|:-:|:-:|
@@ -71,15 +71,15 @@ But wait! Don't leave now, I understand this is a tough beginning, but in this v
 
 Let's talk about...
 
-## The day 5 problem
+## 2 - The day 5 problem
 
 ![During](../images/website/during_gif.gif)
 
-In the AoC, the problems get increasingly difficult each day. The first problem that required me to pause and ponder was the challenge of the 5th of December. I realized that this day's problem's second part was trickier than the previous days. Finally solving it brought me joy and made me remember what I loved in CS and in maths: problem solving and that little feeling of having understood something, the beauty of finding a clever way to tackle a problem.
+In the AoC, the problems get increasingly difficult each day. The first problem that required me to pause and ponder was the challenge of the 5th of December. I realized that this day's problem's second part was trickier than the previous days. Finally solving it brought me joy and made me remember what I loved in CS and in maths: problem solving and that little feeling of having understood something, the beauty of finding a clever way to tackle a problem. Because of that, I consider computer science is part of the family of mathematics.
 
 In this video, my goal is to make you feel this little something. So let's get started!
 
-### The first part of the problem
+### 2.1 - The first part of the problem
 
 You can find the very problem [here](https://adventofcode.com/2023/day/5). Here's an explanation:
 
@@ -88,7 +88,7 @@ In your journey, you help a gardener to plant their seeds. You are given a list 
 | ![](../images/generation/icons/icon_0_seed.png) | ![](../images/generation/icons/icon_1_soil.png) | ![](../images/generation/icons/icon_2_fertilizer.png) | ![](../images/generation/icons/icon_3_water.png) | ![](../images/generation/icons/icon_4_light.png) | ![](../images/generation/icons/icon_5_temperature.png) | ![](../images/generation/icons/icon_6_humidity.png) | ![](../images/generation/icons/icon_7_location.png) |
 |:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|
 
-The final goal is to find the location with the lowest number. The following example is given:
+`2.1-3` The final goal is to find the location with the lowest number. The input data for the problem is a text file, and on the website a dummy input is also provided to help understanding the problem. Here's the dummy input:
 
 ```r
 seeds: 79 14 55 13
@@ -126,16 +126,20 @@ humidity-to-location map:
 56 93 4
 ```
 
-Each map is composed of rules. Each rule is defined by three numbers : the **destination range start**, the **source range start** and the **range length**. On the first map, the "seed to soil map", the first rule is `50 98 2`. The **source range start** is `98` and the **range length** is `2`. That means the range concerns two seed numbers, `98` and `99`. Since the **destination range start** is `50`, the seed numbers `98` and `99` are mapped to location numbers `50` and `51`.
-The second line, `52 50 48`, means that the `48` seeds number `50, 51, ..., 96, 97` are mapped to the `48` location numbers `52, 53, ..., 98, 99`.
+`2.1-3.5` As you can see, the first line gives all the seed numbers, and it is followed by the description of all the maps. Since a map takes a number as an input, and gives another number as an output, we can plot it like so, with the inputs on the left and the outputs on the right. Here, the higher the number, the higher it it is displayed.
+
+`2.1-4` Each map is composed of **rules**, one per line. A rule shifts a range of inputs to a range of outputs. Each rule is defined by three numbers : the **destination range start**, that we will plot on the right side, the **source range start** plotted on the left side, and the **range length**.  On the first map, the "seed to soil map", the first rule is `50 98 2`. So the **destination range start** is `50`, the **source range start** is `98` and the **range length** is `2`. Because the length is two, that means the range concerns only two seed numbers, starting with the **source range start**, that is `98` and `99`. Since the **destination range start** is `50`, the seed numbers `98` and `99` are mapped to soil numbers `50` and `51` respectively.
+The second line, `52 50 48`, means that the `48` seed numbers `50, 51, ..., 96, 97` are mapped to the `48` soil numbers `52, 53, ..., 98, 99`.
+
+`2.1-5` Because I find the visuals to be prettier, the rules of these maps won't always be shown with the grid. From now on, they will also look like this. Though, you must keep in mind we're still dealing with discrete numbers.
 
 <!-- We don't talk about intermediate functions yet! -->
 
-We will call these rules the *shifters*. If, on a given map, no *input characteristic number* matches its *shifters*, the *output characteristic number* is the same as the input. Thus, on the seed-to-soil map, the seed number `55` is mapped to soil `57` since it matches the second shifter, but seed number `13` is mapped to soil `13` since no rule matches with it.
+`2.1-6` Since all these rules do is to shift numbers, we will call them the *shifters*. If, on a given map, no *input characteristic number* matches its *shifters*, the *output characteristic number* is the same as the input. Thus, on the dummy seed-to-soil map, if we had a seed number of value `99`, if would have been mapped to soil number `51` since it matches the first *shifter*. On the contrary, the seed number `13` is mapped to soil `13` since no shifter matches with it.
 
 ![The first map](../images/generation/part_1/s_first_function.svg)
 
-To solve the problem, we have to find, for each seed number, the next *characteristic number* through each map until obtaining the *location number*, and then finding the minimum of all these numbers. Easy, right? Well for our simple input, yes. But on the real input problem, you have 19 seeds, and each map has like 30 rules. So I do not encourage you to do it by hand. We'll create a program to do that for us. Let's begin.
+`2.1-7` To solve the problem, we have to find, for each seed number, the next *characteristic number* through each map until obtaining the *location number*, and then finding the minimum of all these numbers. Easy, right? Well for our dummy input, yes. But on the real input problem, you have 20 seeds, and each map has like 30 rules. So I do not encourage you to do it by hand. We'll create a program to do that for us. Let's begin.
 
 | The example | The real problem |
 |:-:|:-:|
@@ -147,13 +151,13 @@ To solve the problem, we have to find, for each seed number, the next *character
 | ![Moving seed](../images/generation/part_1/r_moving_seed.gif) |
 
 
-#### Formalization
+#### 2.1.1 - Formalization
 
-A good start is to simplify the problem, to understand what the problem is *really* about, and to discard what's useless.
+`2.1.1-1` A good start is to simplify the problem, to understand what the problem is *really* about, and to discard what's useless.
 
-First, each map is what we call in math a *function*. A function is an object taking one or more inputs defined in a set called the *domain*, and outputting one or more outputs defined in another set called the *codomain*.
+`2.1.1-2` Each map is what we call in maths a *function*. A function is an object taking one or more inputs defined in a set called the *domain*, and giving one or more outputs defined in another set called the *codomain*.
 
-Here we draw artistic representations of functions as machines with variable numbers of inputs (on the left) and outputs (on the right).
+`x` Here we draw artistic representations of functions as machines with variable numbers of inputs (on the left) and outputs (on the right).
 
 | ![](../images/generation/functions/arity/function_1_2.png) | ![](../images/generation/functions/arity/function_3_1.png) | ![](../images/generation/functions/arity/function_2_3.png) |
 |:-:|:-:|:-:|
@@ -161,7 +165,7 @@ Here we draw artistic representations of functions as machines with variable num
 <!-- For instance, we have the *absolute value* function. We write it: $\mathbb{R} \to \mathbb{R}_+$, $x \mapsto |x|$ That means the inputs are defined on the *domain* of the *real numbers*, which are all the number we use : integers such as 1 or 42 , negative numbers such as -5, fractions, such as $\frac{2}{3}$, and even more elaborate well defined numbers such as $\sqrt{5}$, $\cos(2)$ or $\pi$. The output *codomain* of the function is only the set of these number that is above zero. And for each $x$ we associate it its absolute value.
 Another example is $g : [0,1]\to\mathbb{R}^2, x\mapsto(x^3-3, x\cdot\sqrt{x})$. That means that our function $g$ takes real numbers in the interval $[0,1]$, and maps them to a pair of two real number, the first element of the pair is given for an entry $x$ by $x^3-3$ and the second by $x\cdot\sqrt{x}$. -->
 
-In mathematics, it is sometimes useful to say we map only one object to another, so there's only one input and one output, but the input and the output can have dimensions matching what we called our number of inputs and outputs. For instance, let's take a look at this scary mathematical writing:
+<!-- In mathematics, it is sometimes useful to say we map only one object to another, so there's only one input and one output, but the input and the output can have dimensions matching what we called our number of inputs and outputs. For instance, let's take a look at this scary mathematical writing:
 
 $$ f:\mathbb{R}^2\to\mathbb{R}^3, (x, y)\mapsto(x+y, x-y, x\cdot y) $$
 
@@ -171,37 +175,37 @@ Here that means that:
 - The *domain* is $\mathbb{R}^2$ and the *codomain* is $\mathbb{R}^3$, meaning the input is defined on two real numbers, and the output is defined on three real numbers,
 - For any pair $(x,y)$ where both $x$ and $y$ are real numbers, $f$ outputs a triplet of numbers, the first one being $x+y$, the second being $x-y$ and the third one being $x\cdot y$.
 
-For us, it is equivalent to say that the function takes two inputs and gives three outputs, or to say it takes one input of dimension two, and gives an output of dimension three.
+For us, it is equivalent to say that the function takes two inputs and gives three outputs, or to say it takes one input of dimension two, and gives an output of dimension three. -->
 
-Here, we have seven maps, hence seven functions. They all map one integer to another, but differently of course. We'll write $f_1(n)$ the value mapped to $n$ by the first function, $f_2(n)$ the value mapped to $n$ by the second and so on. For each function, the starting value and the output value are integers, but they do not represent the same thing. $15$ does not have the same meaning here if it is a seed number, a temperature or a location. That is what units are for: the first function maps integers representing seeds to integers representing soils. So, even if $f_1(f_1(n))$ would be mathematically correct, it makes no sense since the second time we apply $f_1$ we expect a *seed description* but we give it a *soil description*, as it is already an output from $f_1$.
+`2.1.1-3` Here, we have seven maps, hence seven functions. They all map one integer to another integer, but all differently of course. We'll write $f_1(n)$ the value mapped to $n$ by the first function, $f_2(n)$ the value mapped to $n$ by the second and so on. For each function, the starting value and the output value are integers, but they do not represent the same thing. $15$ for instance does not have the same meaning here if it is a seed number, a temperature or a location. That is what units are for: the first function maps integers representing seeds to integers representing soils. So, even if $f_1(f_1(n))$ would be mathematically correct, it makes no sense since the second time we apply $f_1$ we expect a *seed number* but we give it a *soil number*, as it is already an output from $f_1$.
 
 | ![f_1](../images/generation/functions/colors/function_1.png) | ![f_2](../images/generation/functions/colors/function_2.png) | ![f_3](../images/generation/functions/colors/function_3.png) | ![f_4](../images/generation/functions/colors/function_4.png) | ![f_5](../images/generation/functions/colors/function_5.png) | ![f_6](../images/generation/functions/colors/function_6.png) | ![f_7](../images/generation/functions/colors/function_7.png) |
 |:-:|:-:|:-:|:-:|:-:|:-:|:-:|
 <!-- | Seed to Soil | Soil to Fertilizer | Fertilizer to Water | Water to Light | Light to Temperature | Temperature to Humidity | Humidity to Location | -->
 
-As it is clear now, we do not care about the *names* of the maps. We could have given the name $f_{\text{seed to soil}}$ to the first one, but it's quite longer than $f_1$, and we lost the semantics of it being the first function we have to apply. Here, we only care about the order of these functions. $f_2(f_1(n))$ is legal, but $f_1(f_2(n))$ is not semantically, even though, mathematically it's not wrong. And what we *really* care about is the output given by the last function when our seed number $n$ has been transformed by all functions in other element descriptions. That is, the value of:
+`2.1.1-4` As it is clear now, we do not care about the *names* of the maps. We could have given the name $f_{\text{seed to soil}}$ to the first function, but it's quite longer than $f_1$, and we lost the semantics of it being the first function we have to apply. Here, we only care about the order of these functions. $f_2(f_1(n))$ is legal, but $f_1(f_2(n))$ is not semantically, even though, once again, it's not wrong mathematically speaking. And what we *really* care about is the output given by the last function when our seed number $n$ has been transformed by all functions, finally giving a *location number*. That is, the value of:
 
 $$ f_7(f_6(f_5(f_4(f_3(f_2(f_1(n))))))) $$
 
-Since that's a lot of parenthesis, we can also write it as:
+`2.1.1-5` Since that's a lot of parenthesis, we can also write it like so:
 
 $$ (f_7 \circ f_6 \circ f_5 \circ f_4 \circ f_3 \circ f_2 \circ f_1) (n) $$
 
-Which is a notation that represents exactly the same thing, but is more readable as we understand we want the value given by the *composition* of all $f_i$ of an input $n$. Let's call these $f_i$ the *intermediate functions*. 
+Which is a notation that represents exactly the same thing, but is more readable as we understand we want the value given by the *composition* of all $f_i$ of an input $n$. Let's call these $f_i$ the *intermediate functions*. It is worth noticing that in maths our functions are applied *right to left*, from the closest to $n$ to the farthest, while in our drawings the numbers are processed from left to right, as I find more intuitive to have the inputs on the left, and the outputs on the right.
 
-Let's write $f$ the *composition* of all our intermediate functions.
+`2.1.1-6` Let's call $f$ the *composition* of all our intermediate functions.
 
 $$ f = f_7 \circ f_6 \circ f_5 \circ f_4 \circ f_3 \circ f_2 \circ f_1 $$
 
-The problem of the day 5 can now be written as: "Find the lowest value $f(n)$ for every $n$ in the input seed set". What we'll have to do is to find a way to express $f(n)$ for a given $n$. And to compute $f$, we'll first have to know how to compute the intermediate functions.
+`2.1.1-7` The problem of the day 5 can now be written as: "Find the lowest value $f(n)$ for every $n$ in the input seed set". What we'll have to do is to find a way to express $f(n)$ for a given $n$. And to compute $f$, we'll first have to know how to compute the intermediate functions.
 
 Now that we know what to do, let's write some code.
 
-#### Writing some code
+#### 2.1.2 - Writing some code
 
-##### Python 101
+##### 2.1.2.1 - Python 101
 
-In this video, we'll use Python as our programming language because it's quite easy to use and understand even if you're not familiar with it. You don't have to compile it and it's fast enough for the kind of program we want. We're not doing rocket science here.
+`2.1.2.1-1` In this video, we'll use Python as our programming language because it's quite easy to use and understand even if you're not familiar with it. You don't have to compile it and it's fast enough for the kind of program we want. We're not doing rocket science here. For instance look how easy it is to write a program displaying "Hello World!" on the screen, compared to writing the same program in another language called C++.
 
 <table>
 <tr>
@@ -233,7 +237,8 @@ int main(int argc, char* argv[])
 
 <tr>
     <td><img src="https://c.tenor.com/n36qbwYGTOAAAAAd/tenor.gif"></td>
-    <td><img src="https://c.tenor.com/kq7GyBPPIj0AAAAd/tenor.gif"></td>
+    <!-- <td><img src="https://c.tenor.com/kq7GyBPPIj0AAAAd/tenor.gif"></td> -->
+    <td><img src="https://i.imgflip.com/5f4drd.gif"></td>
 </tr>
 
 <tr>
@@ -247,67 +252,73 @@ print("Hello, world!")
 </tr>
 </table>
 
-If you're already familiar with very basic Python and basic OOP, you can skip to the [next chapter](#creating-the-base-objects). 
+`2.1.2.1-2` Now don't get me wrong, I'm a huge fan of C++, but for this kind of tasks, we'll stick with Python.
+If you're already familiar with very basic Python and basic *Object-Oriented Programming*, you can skip to the [next chapter](#2122---creating-the-base-objects). 
 
-###### The basics
+###### 2.1.2.1.1 - The basics
 
-The first tools we have in most programming languages are... functions. They behave more or less like in mathematics: you give inputs, you get outputs. Let's create in Python our function $f$ of not so long ago:
+`2.1.2.1.1-1` The first concept we will see is what we call a `variable`. A variable is a way to give a symbolic name to a value. For instance, in the following Python code, we create a variable named `my_variable` and through the use of the operator `=` we give it a value of 17. We can see what's inside a variable by printing it to the screen for instance:
 
 ```python
-def f(x, y):
-    return x+y, x-y, x*y
+my_variable = 17
+# the_answer = True
+# some_text = "Lorem Ipsum"
+
+print(my_variable)
 ```
 
-Could it be even simpler? The keyword `def` says we create a function, we then give it a name, here `f`. Between the parenthesis are the inputs, if any, and the keyword `return` well returns something from the function, here three numbers separated by a comma `,`.
+`2.1.2.1.1-2` The second concept we'll see is... functions. They behave more or less like in mathematics: you give inputs, they do stuff and you get outputs. Let's create in Python our first function to multiply a number by two. We will call this function `doubled`.
+
+```python
+def doubled(value):
+    return value * 2
+```
+
+`2.1.2.1.1-3` Could it be even simpler? The keyword `def` says we create a function, we then give it a name, here `doubled`. Between the parenthesis are the inputs variables, if any. Here we have only one input represented by the variable `value`. Finally the keyword `return` stops the function and returns something, here the input times two.
 
 Then we can use it like so:
 
 ```python
-result = f(8, 9)
+result = doubled(45)
 print(result)
-# (17, -1, 72)
+# 90
 ```
 
-Let's write $f$ a bit differently: 
+`2.1.2.1.1-4` Unlike in maths, in programming, functions can have no input or no output, or even neither. For instance, we have already seen the `print` function, that takes stuff to print but technically returns nothing, it just prints it on the screen, which is different. And as another example we could think of a function returning the current time, thus taking no input.
 
 ```python
-def f(x, y):
-    a = x+y
-    b = x-y
-    c = x*y
-    return a, b, c
+import datetime
+get_current_time = datetime.datetime.now
+...
+current_time = get_current_time()
+print(current_time)
 ```
 
-That does exactly the same thing as before, but we create three numbers, `a`, `b` and `c` to store temporary results of computations. In programming, they are called *variables*: they are a way to manipulate and use concepts represented with a label. Here, `x` and `y` represent the numbers that are given to the function `f` ; `a`, `b` and `c` represent temporary numbers used for making the function more readable, and `result` was the name of the variable storing the result of the computation of `f(8,9)`. The `=` operator binds the left variable, be it new or already existing, to the value on the right.
-
-Unlike in maths, in programming, functions can have no input or no output, or even neither. For instance, we have the `print` function, that takes stuff to print but technically returns nothing, it just prints it on the screen, which is different. And we could think of a function returning the current time, thus taking no input.
-
-Just one more thing on functions and variables: variables store data, but data is a rather large concept. That data can represent multiple things such as integers, real numbers, booleans (a way to express two states, True or False), string of characters and so on. In Python we don't have to explicitly express the type of variable we use. We can write:
+`2.1.2.1.1-5` Just one more thing on functions and variables: variables store data, but data is a rather large concept. Data can represent multiple things such as integers, real numbers, string of characters, booleans (which are a way to express two states, True or False) and so on. In Python we don't have to explicitly express the type of the variables we use. We can write this:
 
 ```python
-a = "Hello everyone!"  # a is a string, of type str
+# a = "Hello everyone!"  # a is a string, of type str
 a = 1.876              # a is a real number, of type float
 a = False              # a is a boolean, of type bool
 a = 54                 # a is an integer, of type int
 ```
 
-But when writing functions or declaring variables, we can give some *hints* as to what the function takes and returns, or what the variable is supposed to store:
+`2.1.2.1.1-6` But when writing functions or declaring variables, we can give some *hints* as to what the function takes and returns, or what the variable is supposed to store:
 
 ```python
 def add(a:int, b:int) -> int:
     return a + b
 ```
 
-Here, we created a function named `add` and *type hinted* what the function was supposed to take, here two integers, and returned, another integer. But in Python nothing stops us from writing:
+Here, we created a function named `add` and *type hinted* what the function was supposed to take and to give, here two integer inputs, and one integer output. But in Python nothing stops us from writing that:
 
 ```python
 r = add(8, 9)      # Adding two integers
 r = add(8.0, 9.5)  # Adding two floating numbers
 r = add(8, 9.4)    # Adding an integer and a floating number
-r = add("A", "B")  # Adding two strings of characters!
 ```
 
-As long as the operation `a+b` is well defined for the objects `a` and `b`. Adding numbers is legal, be they integers or real numbers, adding two strings concatenates them, but adding a number and a string is not defined. In order to keep our code clean, even if that doesn't stop us from doing silly mistakes, we'll use *type hinting*.
+As long as the operation `a+b` is well defined for the objects `a` and `b`, adding variables is legal. Be they integers or real numbers, that will add them as expected. In order to keep our code clean, even if that doesn't stop us from doing silly mistakes, we'll use *type hinting*.
 
 <!--
 If $f$ were more complicated, for instance:
@@ -353,7 +364,38 @@ def getCurrentTime() -> float:
 Here we created two functions, one that takes two integers and output an integer that is the sum of the two inputs, and one that returns the current time, taking no inputs. To be a little bit more precise, in python we do not have to explicitly say what are our variable made of. As long as the operation is legal it will work. So `add(1, 3)` is legal, so is `add(-99, 0.4865)` since the addition `a + b` is legal between numbers. But if we try to do `add("hello!", 8)` it won't work, since there's no way in python to "add" a string of characters and an integer. In order for the code to be as clear as possible, I'll use syntax hinting in order to explicitly show the type of our variables.
 -->
 
-###### About OOP
+`2.1.2.1.1-7` In this project, we will also use the concept of *conditional statement*. It allows the program to do something specific at a given moment depending on if a given condition is true or false. Let's use this example:
+
+```python
+year_of_birth = 1986
+
+if year_of_birth < 1969:
+    print("You witnessed the Apollo 11 mission!")
+else:
+    print("You weren't born to witness the Apollo 11 mission :(")
+
+print(20 < 15)
+```
+
+Here, we have an `if` / `else` block. The condition checked here is if the variable `year_of_birth` is smaller than 1969. Depending on the result of that comparison, the instructions that are to be run are those from the if block or the else block, here printing two different messages. The comparison is done with the operator `<`, which acts like a function returning `True` or `False` depending on the inputs. Using different comparison operators, we can also check for a greater value, a greater or equal value, a strictly equal value, or a strictly different value.
+
+`2.1.2.1.1-8` In this video, we will also need to iterate through objects. We will create the simplest collection of objects, the *list*. In Python it is written using square brackets, like so:
+
+```python
+my_list = [8, 3.8, False]
+print(my_list)
+```
+
+As you can see, we can have objects with different types in the same list. Now if we want to iterate through them, we can use the `for ... in ...` syntax, like so:
+
+```python
+for my_object in my_list:
+    print(my_object)
+```
+
+In such a `for` block, we can iterate through all the objects of a list, and we can manipulate the current object using a variable we declared in the block. Here, every object of the list named `my_list` can be used, once at a time, through the variable `my_object`. In that example, we only print their values.
+
+###### 2.1.2.1.2 - About OOP
 
 In the code we'll write, we'll use a paradigm called *OOP*, for *Object-Oriented Programming*. That is, we'll represent the data we'll manipulate as **Objects**. An object is roughly a bunch of organized data that is used to represent concepts. The pattern that defines what the object is like is called the *class*, and the real objects we can manipulate are called the *instances* of that particular class. For instance, Alice and Bob could be two instances of the class "Human Beings". Objects have *fields*, which are variables bounded to instances of a class. For instance Alice and Bob both have a name and an age, as defined per the class, but the values stored per objects might be different. Objects can also have *methods*, which are functions allowing to interact with the object.
 
@@ -361,12 +403,17 @@ As an example, let's suppose we want to manipulate 2D shapes. We could create an
 
 ```python
 class Point2D:
-    def __init__(self, x:float, y:float):
+    """This is a basic 2D point."""
+
+    def __init__(self, x: float, y: float) -> None:
         self.x = x
         self.y = y
 
+
 class Circle:
-    def __init__(self, center:Point2D, radius:float):
+    """This is a basic 2D circle."""
+
+    def __init__(self, center: Point2D, radius: float) -> None:
         self.center = center
         self.radius = radius
 ```
@@ -397,7 +444,9 @@ In that example, we have to know what is stored in the object to use it. Ideally
 
 ```python
 class Circle:
-    def __init__(self, center:Point2D, radius:float):
+    """This is a basic 2D circle."""
+
+    def __init__(self, center: Point2D, radius: float) -> None:
         self.center = center
         self.radius = radius
 
@@ -408,7 +457,7 @@ class Circle:
         return 2 * self.radius
 
     def get_area(self) -> float:
-        return 3.14159 * self.radius * self.radius
+        return 3.14159 * self.get_radius() * self.get_radius()
 ```
 
 As we can see, in Python *methods* are defined like regular functions, but their first parameter is always `self`, which represents the object itself. And that `self` allows us to retrieve the *fields* we're interested in. Now we can simply do the previous computation, manipulating only an abstract representation of a circle through its methods. For instance, we can call:
@@ -423,18 +472,20 @@ We could decide that what defines a circle is not its radius, but its diameter. 
 
 ```python
 class Circle:
-    def __init__(self, center:Point2D, diameter:float): # <-- changed here
+    """This is a basic 2D circle."""
+
+    def __init__(self, center: Point2D, diameter: float) -> None:
         self.center = center
-        self.diameter = diameter # <-- changed here
+        self.diameter = diameter
 
     def get_radius(self) -> float:
-        return self.diameter / 2 # <-- changed here
+        return self.diameter / 2
 
     def get_diameter(self) -> float:
-        return self.diameter # <-- changed here
+        return self.diameter
 
     def get_area(self) -> float:
-        return 3.141592 * self.get_radius() * self.get_radius()
+        return 3.14159 * self.get_radius() * self.get_radius()
 ```
 
 And if we wrote
@@ -450,25 +501,35 @@ We would get the same result. See in `get_area()` how we use the function `get_r
 
 Now that we're familiar with Python and OOP, let's code our program!
 
-##### Creating the base objects
+##### 2.1.2.2 - Creating the base objects
 
 So now that the way of handling data is known, let's create real objects for our **Shifters** and our **Intermediate Functions**.
 
 ```python
 class Shifter:
-    def __init__(self, destination:int, source:int, length:int):
-        self.dst = destination
+    """A `Shifter` represents the shift of a range `[source, source+length[`
+    to a range `[destination, destination+length[`.
+    """
+
+    def __init__(self, destination: int, source: int, length: int) -> None:
         self.src = source
+        self.dst = destination
         self.length = length
 
+
 class IntermediateFunction:
-    def __init__(self, params:list[Shifter]):
-        self.params = params
+    """An `IntermediateFunction` is composed of multiple `Shifters`.
+
+    It can process an input value to give an output value.
+    """
+
+    def __init__(self, shifters: list[Shifter]) -> None:
+        self.shifters = shifters
 ```
 
 That's a good start. But for now, these objects don't do much, except storing numbers. The first thing we want to know is which *Shifter* to use for a given input of an intermediate function. To apply our *intermediate function* to a value, we will loop through all the *shifters*. If we find a start range that contains our value, we shift the value according to the value of these parameters. If we don't find any shifters that match our value, we give it back, unchanged.
 
-###### Shifters
+###### 2.1.2.2.1 - Shifters
 
 We will first begin with our `Shifter` objects. Let's begin by checking wether a value is in the starting range of a given *shifter*. Let's call this function `can_act_on`. It should take one input, the value we want to test our *shifter* against, and should return a *boolean*, which is a value either *True* or *False*.
 
@@ -506,7 +567,7 @@ class Shifter:
 
 Note that we do not check if it is legal or not to apply the shift to our value. It's been done before. Here, we only want the result of the operation. We could use it wrongly, but we won't.
 
-Now, we're done with the `Shifter` objects. It is quite nice to notice here that for a given *shifter* `s`, `s.dst - s.src` and `s.src + s.length` would always have constant values. We will talk later about *optimizing* algorithms, but here we would perform extra subtraction or addition each time we want to test a value or to apply the mapping on it. Instead, we can modify the object like this:
+Now, we're done with the `Shifter` objects. It is quite nice to notice here that for any given *shifter* `s`, `s.dst - s.src` and `s.src + s.length` would always have constant values. We will talk later about *optimizing* algorithms, but here we would perform extra subtraction or addition each time we want to test a value or to apply the mapping on it. Instead, we can modify the object like this:
 
 ```python
 class Shifter:
@@ -524,7 +585,7 @@ class Shifter:
 
 The object is constructed and used in the same way as before, but what happens inside is different. What is stored does not correspond exactly to what's been given during the construction of the object, and if its methods do the same things as before, they do it a tiny bit better. It's not a big deal to have an extra operation, as modern computers can perform tons of computation per seconds, but here it makes the code more readable and we can begin to see what *optimization* could mean.
 
-###### Intermediate Function
+###### 2.1.2.2.2 - Intermediate Function
 
 Let's come back to our `IntermediateFunction` objects. As we said, they will have one important method, which will be about computing $f_i(n)$. We will also call this method `apply`, allowing us to write code like:
 
@@ -553,15 +614,20 @@ It's as simple as that. Using the syntax `for element in iterable`, we loop thro
 We can test our functions:
 
 ```python
-map_seed_to_soil = IntermediateFunction([Shifter(50, 98,  2), Shifter(52, 50, 48)])
+map_seed_to_soil = IntermediateFunction(
+    [
+        Shifter(50, 98, 2),
+        Shifter(52, 50, 48),
+    ]
+)
 
-print(map_seed_to_soil.apply(55)) # displays 57
-print(map_seed_to_soil.apply(13)) # displays 13
+print(map_seed_to_soil.apply(55)) # 57
+print(map_seed_to_soil.apply(13)) # 13
 ```
 
 Everything behaves as expected!
 
-###### Importing the data
+###### 2.1.2.2.3 - Importing the data
 
 Like we did just before to test, we could write all the parameters by hand ourselves to create the objects. Even for the simple input, it's starting to be a little bit tedious. And for the real input, well, it would take me days I think and I would certainly make mistakes. So we'll write a little script that imports everything we need in our data structure by *parsing* the input file. Since it's not the core of this article, I won't cover it that much. Basically, we need to split the input files into chunks, separated by empty lines. The first one is our list of seeds, and the others are our maps. Likewise, we split each map chunk into a list of shifters, and create the objects accordingly.
 
@@ -583,7 +649,7 @@ with open("input.txt") as file:
 
 In the end we have all our input seeds in a list called `seeds`, and all our properly constructed intermediate functions in a list called `intermediate_functions`.
 
-###### Creating the final function
+###### 2.1.2.2.4 - Creating the final function
 
 We now need to create our final function $f$, the one that takes as input a seed number and outputs a location number. To do so, we will create a variable named `value`, first being our input. For every *intermediate functions*, `value` will be updated by the current function. So for a seed input $n$, at first `value` = $n$, then `value` = $f_1(n)$, then `value` = $f_2(f_1(n))$, then `value` = $f_3(f_2(f_1(n)))$ and so on until `value` = $(f_7 \circ f_6 \circ f_5 \circ f_4 \circ f_3 \circ f_2 \circ f_1) (n)$, using the *composition* notation we saw earlier.
 
@@ -618,7 +684,7 @@ And since it's prettier, let's draw the trajectory as one single smooth curve
 
 ![The progression of a trajectory](../images/generation/part_1/r_trajectory_progression.gif)
 
-#### Solving Part One
+#### 2.1.3 - Solving Part One
 
 Now all we have to do is to finally solve part one! We need, for each input seed, to compute its location. And then return the location with the lowest value. To do so we'll create a variable named `min_location` that, for each iteration, will keep the lowest location we've seen so far, being updated if we find a location with a lower value than the current minimal location. To begin with, we'll assign a *huge* value to this variable so we're sure it will be updated at least once. Let's put this value at `float("+inf")`, which basically represents infinity, ensuring every value is lower than this one.
 
@@ -640,16 +706,15 @@ And voilà! When we run the code, for the sample input we get `35`, which is the
 |:-:|
 | Interactive image! |
 
-### The Second part of the problem
+### 2.2 - The Second part of the problem
 
 Our character discovers that the number of seeds we tested is too low: The first line of our input describes *ranges* of seed numbers. The values come in pairs, the first of which describes the **start** number, and the second the **length** of the range. So in our example, `79 14 55 13` means we'll have to test two ranges of seeds, the first one starting at `79` and having `14` seeds, so the seeds `79, 80, ..., 91, 92` and the second starting at `55` and having `13` seeds, `55, 56, ..., 66, 67`. Instead of four seed numbers, we have to test 14+13=27 seed numbers.
 
-#### Naive approach
+#### 2.2.1 - Naive approach
 
 All we have to do is to change the import, instead of reading the seed number one by one, we'll read them two by two, and instead of adding one seed number to our total, we'll add a `range` object, which is an iterator allowing us to write stuff like:
 
 ```python
-
 for i in range(10):
     do_something(i)
 ```
@@ -679,11 +744,11 @@ Well... Nothing happens... Why? Wait, it has not crashed or something, it's stil
 
 About 7 hours! That is... way too much time. We could use random seed numbers instead of doing multiple times the very same to get a more precise result, but the order of magnitude would be the same. Solving the problem in this way would take a long time for sure.
 
-#### Complexity
+#### 2.2.2 - Complexity
 
 As we just saw, the same algorithm (for each seed number, compute the location number and keep in mind which one was the lowest) can crunch the numbers really fast for the first part, but is way too slow for the second part. Why? We just *scaled up* the *number of seeds* of the problem. We went from $20$ seeds to more than $10^9$.
 
-##### What is complexity?
+##### 2.2.2.1 - What is complexity?
 
 In computer science, problems have *sizes*, for instance the amount of number one wants to find the minimum of, the length of the table one wants to sort, or the number of points one wants to find the shorter path from, or the number of words a dictionary has when one wants to find a definition for a given word. Intuitively, we understand it's easier to find the minimum of two numbers versus the minimum of one hundred numbers, it's easier to sort a list of 3 numbers versus a list of one billion ; it's easier to find the shortest path between four points versus 15 ; it's easier to find a word in a dictionary of 10 words versus a dictionary of ten of thousands words. Here, the size was the number of seeds.
 
@@ -812,15 +877,15 @@ If we have two computer A and B, B being twice as fast as A, for a given $n$, A 
 
 So even though of course better computers yield better results, understanding how complex an algorithm is helps to understand how the time required to perform a task *scales* when the problem's size changes.
 
-##### Finding the complexity of our algorithm
+##### 2.2.2.2 - Finding the complexity of our algorithm
 
-###### On parallelization
+###### 2.2.2.2.1 - On parallelization
 
 In this video, we'll only talk about a computer being able to do only one task at a time. Certain problems, like this one in fact, can be solved faster by using multiple processes working together simultaneously. For instance, for the function computing the norm of a vector, we said the version with a *constant space complexity* was better than the one with a *linear spatial complexity*? Well, that could have been a lie. In a theoretical world, for a vector of length $n$, let's suppose we also have $n$ workers able to work simultaneously, in only time unit they can all perform the squaring. That would still be $n$ operations, but done in only one instant. And it would take $n$ slots of memory at the same time. And to add the numbers we could add every pair of numbers in parallel and repeat until all number are added. That would take at most $k$ operation, where $k$ is the smallest number such as $2^k\geq n$. So we have an algorithm that take roughly $k$ operations, where $k$ is the logarithm in base two of $n$. Since logarithms of all bases are all proportional we don't even bother write the base. So even though there still was a *linear* number of operations to do, they were done in an *logarithmic* number of time. This kind of approach works well when the input is a list of element that won't interact. You can divide the problem into smaller problems, again and again and parallelize the computation.
 
 So, here for instance, we could divide all our seeds into 700 lists, give that to 700 computers, they would all find their minimum location, then comparing 700 numbers to find the real minimum is a piece of cake but even that we could parallelize, and in less than one minute it would spit the solution. But we won't do that as it feels like cheating to me to bring out the big guns to solve a coding problem, and I don't own yet 700 computers. So our optimization will be focused on solving the problem doing only one operation at a time, like we would do by hand, just a bazillion times slower.
 
-###### On other measures of algorithmic complexity
+###### 2.2.2.2.2 - On other measures of algorithmic complexity
 
 Like we have *instances* for our classes, let's call *instances* of a problem a given input for a problem. As an example, `[1, 2, 3, 4]` and `[4, 1, 3, 2]` are two different instances of the same size for an algorithm sorting a list of numbers. An important thing to note is that for two instances of a problem with the same size $n$, the same algorithm may do a different number of operations. If we come back to our two lists that are to be sorted, for most efficient sorting algorithms, the first step is to see how shuffled the list is, and then sort the shuffled parts. So on the first list, the algo would read all numbers, see that the list is already sorted and thus terminate. That would have taken a linear amount of operation (reading every number a constant number of time) so the complexity is related to $n$. On the other hand, our same algo would then sort the second list, and that would take roughly $n^2$ operations if our algo is inefficient, and $n\log(n)$ if we're a bit clever in the writing of our algorithm. So here, we have a kind of "best case scenario". It may be interesting to also provide information on how well the algo performs in the best case. As we saw, saying that our algo is in $O(f)$ means that for large numbers $n$, our algo does less operations than $f(n)$ times a constant. We do have an upper bound, saying that in the worst case our algo won't do worse than $f$ times a constant for inputs with large sizes.
 
@@ -828,7 +893,7 @@ The worst case scenario is quite every time a better indication than the best ca
 
 Other measures exists, though. There is for instance the *average* complexity, harder to compute, that indicates on average how many operations are expected. For some problems, we can have worst case scenario in $O(n^3)$ which is really bad for huge numbers, but know that on average the time complexity is $O(n)$ so in most cases the algorithm is usable for big tasks. When a task is repeated a lot, we can measure on a set of instances another kind of average complexity. All these indicators can help us understand an algorithm's complexity. In this video, already too long, we'll only focus on the $O$ notation.
 
-###### Finding the complexity of our algorithm (for real)
+###### 2.2.2.2.3 - Finding the complexity of our algorithm (for real)
 
 Let's find out how efficient our algorithm is. The algorithm looks like:
 
@@ -870,11 +935,11 @@ The final complexity of our program is thus $O(p\cdot k) + O(n\cdot p\cdot k) = 
 
 Is there good ways of optimizing an algorithm that is already linear?
 
-#### Another perspective
+#### 2.2.3 - Another perspective
 
 We can't lie to ourselves: by the way the problem is stated, if we have $n$ inputs, we must at least test all our inputs to find the minimum, since in the way we implemented the problem we don't know how big the final location number would be only based on the seed number. The algorithm **must** be at least in $O(n)$. So that does mean we cannot reduce the amount of time base on our input's size. Sorry. But are we doomed? What if we change the way we measure our problem's size, and thus create another algorithm?
 
-##### The solution layed in front of our eyes since the beginning
+##### 2.2.3.1 - The solution layed in front of our eyes since the beginning
 
 See how the part 2 describes not individual numbers of seeds, but *ranges of seeds*. What if we could manipulate the ranges themselves instead of individual numbers? In fact, we could even say that if we have $n$ ranges of max length $l$, our algo compute a location for every single seed, that is for every range of the $n$ ranges, and for every seed number of the $l$ seeds contained in that range. So, we're applying an operation taking a linear amount of time to deal with $n\cdot l$ seeds. If we assume (and as per the numbers, we can!) $l$ is larger than $n$, it takes at least $n\cdot n$ operations, since $l\geq n\Rightarrow n\cdot l\geq n\cdot n$. So, we could say in part one the $n$ numbers provided were handled in $O(n)$, but in part two they represented a much much bigger problem, handled in $O(n^2)$.
 
@@ -904,7 +969,7 @@ What we would like is something like:
 
 Where $f(n)$ growing slower than $n$ in order to have a worst case complexity smaller than $O(n^2)$
 
-##### Introducing ranges
+##### 2.2.3.2 - Introducing ranges
 
 As we can see, in general close enough inputs result in close enough outputs. That is because our intermediary functions are based on shifters, and they do move a whole range altogether. So if $a$ and $a+1$ can be mapped by a shifter, they will become $a+d$ and $a+d+1$ respectively. When they can't be mapped by the same shifter, their path would split, resulting in a gap between the two outputs. So instead of computing every number of a range, we can take advantage in dividing our initial range into new ranges, corresponding to all the "breaking points" of an intermediate function, the points where two consecutive input numbers are mapped to two not consecutive numbers. We then know that each range corresponds to only one shifter, so we can map each one to another output range. So, for a given intermediate function and a given range of length $l$, the output will be a list of $k$ ranges; finding the lowest value of them takes only $k$ operations, instead of testing every $l$ values of our beginning range!
 
@@ -1025,7 +1090,7 @@ Okay, now finally for the computation:
 
 For every split range, like we did with integers, we iterate through all shifters to find one we can apply. Since it's guaranteed our ranges are split by the shifter, they individually either fit exactly in only one shifter, or fit none of them. So we only have to test a shifter on a single value of the range. Since the ranges could technically be one element, and that `our_range.min` is inside our range, we can try only the min value of the range. If the shifter can act on that value, it can act on our range and we shift the whole range by the shifter's delta. We then return all the shifted ranges. And voilà, a `Range` can now pass through an `IntermediateFunction`!
 
-##### On Complexity... again!
+##### 2.2.3.3 - On Complexity... again!
 
 But wait you may ask, on part 1 our functions turned single values into single values, now our intermediate functions turn a range into a list of ranges. So there are two things to think about:
 
@@ -1154,7 +1219,7 @@ But here comes the good news: We don't consider all these variables as part of t
 
 It is now guaranteed that after the 7th operation, we have a maximum number of $l+14\cdot k$ ranges. Since $k$ and $l$ are quite small numbers, in our instance $l=10$ and $k=45$ that could mean a max number of $640$ output ranges. That's not a lot for a computer, and fortunately, all intermediate functions don't have 45 shifters, in fact the second highest number of shifters in "only" 23 in our instance. And when computing the exact number for this instance of the problem, we "only" have 54 ranges at the very end, and throughout every step we called an intermediary function on a range only 192 times. These numbers are indeed really small compared to our billions of calls at the beginning.
 
-##### Finally, the solution \o/
+##### 2.2.3.4 - Finally, the solution \o/
 
 Let's finally solve that second part. Instead of handling every input range separately, we'll combine them into a single list. So for every intermediate function we have a list of input ranges, and we want to compute a list of output ranges. Let's write our last function:
 
@@ -1177,13 +1242,13 @@ def compute_min_location_for_seed_range(ranges_in: list[Range]) -> int:
 
 We test on the dummy input, it instantly gives the right answer, `46`, and if we enter the right values... `13####820` Here we are! We finally have the answer!
 
-## Conclusion
+## 3 - Conclusion
 
-### Quick recap
+### 3.1 - Quick recap
 
 Here, we solved a problem from the Advent of Code. The first part of the problem was no challenge to us, as we just had to formalize and create the logics to deal with it. Part two could not be solved with the same algorithm, or at least not in a short amount of time since we went from an algorithm in $O(n)$ where $n$ was small to an algorithm in $O(n^2)$ where $n$ was rather big. We then tweaked our algorithm to make it work in $O(n)$ where the size of the problem became not the number of seeds we had, but the number of ranges of seeds we had.
 
-### What could have been done better?
+### 3.2 - What could have been done better?
 
 As perfectly working, our algorithm is far from perfect. For instance, when ranges are outputted from an intermediate function, if they're close enough or even worse, overlapping, they could have been merged into a single one. Oh and remember iterating through *all* shifters to find the one that can shift our seeds or our range? That could have been optimized too. It wouldn't change the overall complexity, but there's a lot we could do to improve our algorithm. What I tried to do here, is not to show you how to craft the most efficient (and unreadable) algorithm, but to understand what are the problems we face and the tools we use in computer science, and used an enjoying puzzle from a lovely challenge I found amusing. There are of course many other ways to tackle down this problem. We could have followed the train of thought saying that two inputs cannot be mapped to the same output, and that every output has an input to conclude $f$ is a bijective function, and thus inversible. From there we could have literally tried to take the problem backward...
 
@@ -1193,6 +1258,6 @@ As perfectly working, our algorithm is far from perfect. For instance, when rang
 
 Mathematically, there's a lot of approximation, like the way we dealt with $O(n)$ like if was a number, in order not to make the video more complicated, or the way we talked about the $O$ notation and not the $\Theta$ notation that would sometimes make more sense... I home my fellow maths enjoyers and computer scientists will forgive me on this one, as I intended not to give a course on computer science, but to show a bit of what computer science or complexity is about.
 
-### Final words
+### 3.3 - Final words
 
 I hope you enjoyed this video as much as I enjoyed making it ; I hope if these topics were new to you you found interest in these and learnt something, and if you were already familiar with basic computer science, you were pleased with the way it was shown. Let me know in the comments, I'll read every feedbacks, so if i ever do another video I'll know what to improve! 😃
