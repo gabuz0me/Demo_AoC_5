@@ -1,4 +1,4 @@
-Version 3 (vidéo jusqu'à 2.1.2.1.1)
+Version 4
 
 ---
 
@@ -25,10 +25,15 @@ Version 3 (vidéo jusqu'à 2.1.2.1.1)
     - [2.2.1 - Naive approach](#221---naive-approach)
     - [2.2.2 - Complexity](#222---complexity)
       - [2.2.2.1 - What is complexity?](#2221---what-is-complexity)
-      - [2.2.2.2 - Finding the complexity of our algorithm](#2222---finding-the-complexity-of-our-algorithm)
-        - [2.2.2.2.1 - On parallelization](#22221---on-parallelization)
-        - [2.2.2.2.2 - On other measures of algorithmic complexity](#22222---on-other-measures-of-algorithmic-complexity)
-        - [2.2.2.2.3 - Finding the complexity of our algorithm (for real)](#22223---finding-the-complexity-of-our-algorithm-for-real)
+        - [2.2.2.1.1 - Examples](#22211---examples)
+        - [2.2.2.1.1.1 - The Third Value](#222111---the-third-value)
+        - [2.2.2.1.1.2 - The minimum of the list](#222112---the-minimum-of-the-list)
+        - [2.2.2.1.1.3 - Multiplication Table](#222113---multiplication-table)
+        - [2.2.2.1.2 - Formalization](#22212---formalization)
+      - [2.2.2.2 - Other ways to express complexity](#2222---other-ways-to-express-complexity)
+        - [2.2.2.2.1 - On other measures of algorithmic complexity](#22221---on-other-measures-of-algorithmic-complexity)
+        - [2.2.2.2.2 - On parallelization](#22222---on-parallelization)
+      - [2.2.2.3 - Finding the complexity of our algorithm](#2223---finding-the-complexity-of-our-algorithm)
     - [2.2.3 - Another perspective](#223---another-perspective)
       - [2.2.3.1 - The solution layed in front of our eyes since the beginning](#2231---the-solution-layed-in-front-of-our-eyes-since-the-beginning)
       - [2.2.3.2 - Introducing ranges](#2232---introducing-ranges)
@@ -397,9 +402,9 @@ In such a `for` block, we can iterate through all the objects of a list, and we 
 
 ###### 2.1.2.1.2 - About OOP
 
-In the code we'll write, we'll use a paradigm called *OOP*, for *Object-Oriented Programming*. That is, we'll represent the data we'll manipulate as **Objects**. An object is roughly a bunch of organized data that is used to represent concepts. The pattern that defines what the object is like is called the *class*, and the real objects we can manipulate are called the *instances* of that particular class. For instance, Alice and Bob could be two instances of the class "Human Beings". Objects have *fields*, which are variables bounded to instances of a class. For instance Alice and Bob both have a name and an age, as defined per the class, but the values stored per objects might be different. Objects can also have *methods*, which are functions allowing to interact with the object.
+`2.1.2.1.2-1` In the code we'll write, we'll use a paradigm called *OOP*, short for *Object-Oriented Programming*. That is, we'll represent the data we'll manipulate as **Objects**. An object is roughly a bunch of organized data that is used to represent concepts. The pattern that defines what the object is like is called the *class*, and the real objects we can manipulate are called the *instances* of that particular class. As an example, we could represent these shapes as *instances* of the class `Circle`. Objects have *fields*, which are variables bounded to the instances of a class. For example to these circles have a center and a radius, as defined per the class in order to fully describe them, but the values stored per objects might be different. Objects can also have *methods*, which are functions allowing the objects to do things.
 
-As an example, let's suppose we want to manipulate 2D shapes. We could create an object representing a *Circle*. Let's say our `Circle` is defined by a center point and a radius. On a plane such as a screen or a sheet of paper, the center is a point on that plane and is represented by two coordinates, x and y. We can create another object, `Point2D` that represents such concept. We would write:
+`2.1.2.1.2-2` As an example, let's suppose we want to manipulate 2D shapes. We could create an object representing a *Circle*. Let's say our `Circle` is defined by a center point and a radius. On a plane such as a screen or a sheet of paper, the center is a point on that plane and is represented by two coordinates, x and y. We can create another object, `Point2D` that represents such concept. We would write:
 
 ```python
 class Point2D:
@@ -418,29 +423,27 @@ class Circle:
         self.radius = radius
 ```
 
-This example is a bit verbose. The keyword `class` says we're creating a new class, whose name comes after. The `__init__` method is in Python the special *method* that creates the actual object, and its parameters are what we have to give to construct the object. Basically, here what we are saying is that when we construct a circle, we have to say where it is located by giving it a `Point2D`, and a radius which is a real number, represented by `float`. Then we create the fields of our classes, without surprise the x and y coordinates for the point, and the center and radius for the circle. Now we have a class, let's create real objects:
+`2.1.2.1.2-3` This example is a bit verbose. The keyword `class` says we're creating a new class, whose name comes after. Then comes an optional description of the object in order to document code. The `__init__` method is in Python a special *method* that creates the actual object, and its parameters are what we have to give to construct the said object. In Python, the first parameter of an object's method is always `self`, and it is a variable representing the object itself. Basically, here what we are saying is that when we construct a 2D point, we have to give it two real numbers represented by `float`, x and y, and when we create a circle, we have to say where it is located by giving it a center of type `Point2D`, and a radius which is a real number. Then we create the fields of our classes, without surprise the x and y coordinates for the point, and the center and radius for the circle. Now we have two classes, let's create instances:
 
 ```python
-position = Point2D(4.5, -3.18)
-circle = Circle(position, 6.25)
+position = Point2D(0.6, 23.7)
+circle = Circle(position, 6.5)
 ```
 
 Or even simpler,
 
 ```python
-circle = Circle(Point2D(4.5, -3.18), 6.25)
+circle = Circle(Point2D(0.6, 23.7), 6.5)
 ```
 
-If we don't care that much about giving a label to the center of the circle. Now we have created a circle at position $(4.5, -3.18)$ with a radius of $6.25$. For now, it doesn't do much, here we just linked data  but what are the things we may want to do with a circle? Retrieve its radius or diameter, compute its area maybe.
+If we don't care that much about giving a label to the center of the circle. Now we have created a circle at position $(0.6, 23.7)$ with a radius of $6.5$. For now, it doesn't do much, here we just stored data and we can access it through the *fields* we've just created.
 
 ```python
-radius = circle.radius
-pos_x = circle.position.x
-diameter = 2 * circle.radius
-area = 3.14159 * circle.radius * circle.radius
+print(circle.radius)
+print(circle.center.x)
 ```
 
-In that example, we have to know what is stored in the object to use it. Ideally, we should't care about what the object's internal structure is to interact with it, so let's create the methods to retrieve its radius, its diameter or its area.
+`2.1.2.1.2-4` Ideally, in OOP, we should't use the fields directly when dealing with an object, so for the sake of good practice, let's create methods for our `Circle` class to get the radius, and let's create some more to compute the diameter and the area.
 
 ```python
 class Circle:
@@ -454,13 +457,13 @@ class Circle:
         return self.radius
 
     def get_diameter(self) -> float:
-        return 2 * self.radius
+        return 2 * self.get_radius()
 
     def get_area(self) -> float:
         return 3.14159 * self.get_radius() * self.get_radius()
 ```
 
-As we can see, in Python *methods* are defined like regular functions, but their first parameter is always `self`, which represents the object itself. And that `self` allows us to retrieve the *fields* we're interested in. Now we can simply do the previous computation, manipulating only an abstract representation of a circle through its methods. For instance, we can call:
+Note how `self`, the first parameter of our methods, allows us to retrieve the *fields* we're interested in. Now we can use these methods to manipulate an abstract representation of a circle.
 
 ```python
 r = circle.get_radius()
@@ -468,7 +471,7 @@ d = circle.get_diameter()
 a = circle.get_area()
 ```
 
-We could decide that what defines a circle is not its radius, but its diameter. We could write:
+`2.1.2.1.2-5 x` We could decide that what defines a circle is not its radius, but its diameter. We could write:
 
 ```python
 class Circle:
@@ -499,11 +502,11 @@ a = circle.get_area()
 
 We would get the same result. See in `get_area()` how we use the function `get_radius()` to retrieve the radius of the circle even though it's been defined with its diameter. In fact, we do not care about *how* the information is stored when we want to compute the area and more generally when we manipulate an object. This layer of abstraction is what makes OOP powerful, we care only when we define how the object should behave and when we create it, but for simple tasks, we do not care at all afterwards. We just manipulate it using a high-level semantics, close to the way we talk. Here, the members of our objects are exactly what is given when constructing the object, but that will not always be the case, as we'll see later.
 
-Now that we're familiar with Python and OOP, let's code our program!
+`2.1.2.1.2-6` Now that we're familiar with Python and OOP, let's code our program!
 
 ##### 2.1.2.2 - Creating the base objects
 
-So now that the way of handling data is known, let's create real objects for our **Shifters** and our **Intermediate Functions**.
+`2.1.2.2-1` So now that the way of handling data is known, let's create real objects for our **Shifters** and our **Intermediate Functions**. The `Shifters` are defined by three numbers, as we've seen before, and the `IntermediateFunctions` are defined with a list of `Shifters`.
 
 ```python
 class Shifter:
@@ -527,11 +530,12 @@ class IntermediateFunction:
         self.shifters = shifters
 ```
 
-That's a good start. But for now, these objects don't do much, except storing numbers. The first thing we want to know is which *Shifter* to use for a given input of an intermediate function. To apply our *intermediate function* to a value, we will loop through all the *shifters*. If we find a start range that contains our value, we shift the value according to the value of these parameters. If we don't find any shifters that match our value, we give it back, unchanged.
+`2.1.2.2-2` That's a good start. But for now, these objects don't do much, except storing numbers. The first thing we want to know is which *shifter* is to be used for a given input of an intermediate function. To apply our *intermediate function* to a value, we will loop through all *shifters*: if we find a shifter whose start range contains our input value, we stop and return our value shifted. If we don't find any shifters matching our value, we give it back, unchanged.
 
 ###### 2.1.2.2.1 - Shifters
 
-We will first begin with our `Shifter` objects. Let's begin by checking wether a value is in the starting range of a given *shifter*. Let's call this function `can_act_on`. It should take one input, the value we want to test our *shifter* against, and should return a *boolean*, which is a value either *True* or *False*.
+`2.1.2.2.1-1` Let's begin with our `Shifter` objects. Let's create a function checking whether a value is in the starting range of a given *shifter*. Let's call this function `can_act_on`. It should take one input, one integer, the value we want to test our *shifter* against, and should return a *boolean*, *True* or *False*.
+To check if the shifter can act on a value, that is, the value is contained in the input range of that shifter, we simply check whether the input value is greater or equal than the **source range start** and strictly less than the **source range start** plus the **range length**. You can convince yourself that it is strictly less than that sum and not less or equal by imagining a shifter shifting only one input, the only input that could be shifted would be the very **source range start**, so the condition for a value $v$ would be written like so: `src` $\leq v <$ `src` $+1$, a less or equal condition on the right would lead to two values matching the condition.
 
 ```python
 class Shifter:
@@ -541,11 +545,15 @@ class Shifter:
             return True
         else:
             return False
+```
 
-    # Which can be written more compactly as:
+The function can be written more compactly like we would write in maths: `src` $\leq v <$ `src + length`.
+
+```python
     def can_act_on(self, value:int) -> bool:
         return self.src <= value < self.src + self.length
 ```
+
 
 So now we can perform tests like:
 
@@ -556,7 +564,7 @@ else:
     # Do something else
 ```
 
-Let's now create a method `apply` on our *shifter* objects. It takes one input, the value we want to shift and returns the shifted value.
+`2.1.2.2.1-2` Let's now create a method `apply` on our *shifter* objects. It takes one input, the value we want to shift and returns the shifted value. The amount of the shift is simply the **destination range start** minus the **source range start**.
 
 ```python
 class Shifter:
@@ -565,9 +573,9 @@ class Shifter:
         return value + (self.dst - self.src)
 ```
 
-Note that we do not check if it is legal or not to apply the shift to our value. It's been done before. Here, we only want the result of the operation. We could use it wrongly, but we won't.
+Note that we do not check whether it is legal to apply the shift to our value. It's been done just before. Here, we only want the result of the operation. We could use it wrongly, but we won't.
 
-Now, we're done with the `Shifter` objects. It is quite nice to notice here that for any given *shifter* `s`, `s.dst - s.src` and `s.src + s.length` would always have constant values. We will talk later about *optimizing* algorithms, but here we would perform extra subtraction or addition each time we want to test a value or to apply the mapping on it. Instead, we can modify the object like this:
+`2.1.2.2.1-3` Now, we're done with the `Shifter` objects. It is quite nice to notice here that for any given *shifter* `s`, `s.dst - s.src` and `s.src + s.length` would always have constant values. We will talk later about *optimizing* algorithms, but here we would perform extra subtraction or addition each time we want to test a value or to apply the mapping on it. Instead, we can modify the object like this:
 
 ```python
 class Shifter:
@@ -583,11 +591,11 @@ class Shifter:
         return value + self.delta
 ```
 
-The object is constructed and used in the same way as before, but what happens inside is different. What is stored does not correspond exactly to what's been given during the construction of the object, and if its methods do the same things as before, they do it a tiny bit better. It's not a big deal to have an extra operation, as modern computers can perform tons of computation per seconds, but here it makes the code more readable and we can begin to see what *optimization* could mean.
+`2.1.2.2.1-4` The object is constructed and used in the same way as before, but what happens inside is different. What is stored does not correspond exactly to what's been given during the construction of the object, and if its methods do the same things as before, they do it a tiny bit better. Now, internally, the objects store the input range start, called here `in_min`, the input range end, or more exactly one more than the input range end, as we've seen before, called here `in_max`, and `delta`, the amount of the shift. It's not a big deal to have an extra operation, as modern computers can perform tons of computation per seconds, but here it makes the code more readable and we can begin to see what *optimization* could mean.
 
 ###### 2.1.2.2.2 - Intermediate Function
 
-Let's come back to our `IntermediateFunction` objects. As we said, they will have one important method, which will be about computing $f_i(n)$. We will also call this method `apply`, allowing us to write code like:
+`2.1.2.2.2-1` Let's now come back to our `IntermediateFunction` objects. They will have one important method, which will be about computing $f_i(n)$. We will also call this method `apply`, allowing us to write code like that:
 
 ```python
 f_1 = IntermediateFunction(...)
@@ -609,9 +617,11 @@ class IntermediateFunction:
         return value
 ```
 
-It's as simple as that. Using the syntax `for element in iterable`, we loop through all shifters, `shifter` representing the `Shifter` of the current iteration in the loop, and if we find one that can act on our value, we return the value of this transformation. If we find nothing, we simply return the same value we had as an input. It is worth mentioning that for a given input value, at most one *shifter* can act on it. Else, that would mean that there would be two possible transformations which is not possible, since for a given $n$ and a given intermediate function $f_i$, $f_i(n)$ is well defined and has a unique value. Nothing here actually prevents two different *shifters* to return `True` on their `can_act_on` methods. Thus, in the current implementation of the problem, only the first *shifter* in the *intermediate functions* would trigger the shifting. We expect the value we use to create the object to be consistent and to not create undefined behaviors, as we are ~~lazy~~ trusting the authors of the problem to provide meaningful data.
+`2.1.2.2.2-2` It's as simple as that. Using the `for element in iterable` syntax, we loop through all shifters, the variable `shifter` representing the `Shifter` of the current iteration in the loop, and if we find one that can act on our value, we return the value of this transformation. If after looping through all shifters we find nothing, we simply return the same value we had as an input.
 
-We can test our functions:
+`2.1.2.2.2-3?` It is worth mentioning that for a given input value, at most one *shifter* can act on it. If two or more shifters of the same intermediate function could act on the same input value, that would mean there would be two or more different outputs, and that is not possible, since for a given $n$ and a given intermediate function $f_i$, $f_i(n)$ is well defined and has a unique value. Nothing here actually prevents two different *shifters* to return `True` on their `can_act_on` methods. Thus, in the current implementation of this problem, only the first *shifter* in the loop would trigger the shifting. So, we expect the data we use to create the objects to be consistent and to not create undefined behaviors, as we are 1. lazy and 2. trusting the authors of the problem to provide meaningful data.
+
+`2.1.2.2.2-4` We can now test our objects, creating the "Seed to soil map" from the dummy input:
 
 ```python
 map_seed_to_soil = IntermediateFunction(
@@ -629,7 +639,7 @@ Everything behaves as expected!
 
 ###### 2.1.2.2.3 - Importing the data
 
-Like we did just before to test, we could write all the parameters by hand ourselves to create the objects. Even for the simple input, it's starting to be a little bit tedious. And for the real input, well, it would take me days I think and I would certainly make mistakes. So we'll write a little script that imports everything we need in our data structure by *parsing* the input file. Since it's not the core of this article, I won't cover it that much. Basically, we need to split the input files into chunks, separated by empty lines. The first one is our list of seeds, and the others are our maps. Likewise, we split each map chunk into a list of shifters, and create the objects accordingly.
+`2.1.2.2.3-1` Let's now import the data from the advent of code text file into our data structure. We won't enter into the details of how to do that in Python, as it is not the topic of this video, but we now have two lists: `seeds`, a list of integers representing the seed numbers, and `intermediate_functions` a list containing all our intermediate functions properly constructed with the shifters. Here's a way of doing so. Not the cleanest, but it gets the job done.
 
 ```python
 seeds: list[int] = []
@@ -647,11 +657,9 @@ with open("input.txt") as file:
         intermediate_functions.append(IntermediateFunction(shifters))
 ```
 
-In the end we have all our input seeds in a list called `seeds`, and all our properly constructed intermediate functions in a list called `intermediate_functions`.
-
 ###### 2.1.2.2.4 - Creating the final function
 
-We now need to create our final function $f$, the one that takes as input a seed number and outputs a location number. To do so, we will create a variable named `value`, first being our input. For every *intermediate functions*, `value` will be updated by the current function. So for a seed input $n$, at first `value` = $n$, then `value` = $f_1(n)$, then `value` = $f_2(f_1(n))$, then `value` = $f_3(f_2(f_1(n)))$ and so on until `value` = $(f_7 \circ f_6 \circ f_5 \circ f_4 \circ f_3 \circ f_2 \circ f_1) (n)$, using the *composition* notation we saw earlier.
+`2.1.2.2.4-1` We now need to create our final function $f$, the one that takes as an input a seed number and outputs a location number. To do so, we will create a variable named `value`, first being our seed number input. For each *intermediate functions*, `value` will be updated by the current function. So for a seed input $n$, at first `value` = $n$, then `value` = $f_1(n)$, then `value` = $f_2(f_1(n))$, then `value` = $f_3(f_2(f_1(n)))$ and so on until `value` = $(f_7 \circ f_6 \circ f_5 \circ f_4 \circ f_3 \circ f_2 \circ f_1) (n) = f(n)$ (the composition of all our intermediate functions).
 
 ```python
 def compute_location_from_seed(seed_nb:int) -> int:
@@ -670,23 +678,9 @@ def compute_location_from_seed(value:int) -> int:
     return value
 ```
 
-Here we don't need to keep in memory all the intermediate values. Only the current one is useful. But we can plot all the intermediate values to see that the evolution is rather chaotic.
-
-![Seed one, no traj](../images/generation/part_1/s_seed_no_traj.svg)
-
-For the purpose of the visualization, we'll connect these points, and call that a trajectory.
-
-![Seed one, yes traj](../images/generation/part_1/s_seed_yes_traj.svg)
-
-And since it's prettier, let's draw the trajectory as one single smooth curve
-
-![Seed one, yes traj smooth](../images/generation/part_1/s_seed_yes_traj_smooth.svg)
-
-![The progression of a trajectory](../images/generation/part_1/r_trajectory_progression.gif)
-
 #### 2.1.3 - Solving Part One
 
-Now all we have to do is to finally solve part one! We need, for each input seed, to compute its location. And then return the location with the lowest value. To do so we'll create a variable named `min_location` that, for each iteration, will keep the lowest location we've seen so far, being updated if we find a location with a lower value than the current minimal location. To begin with, we'll assign a *huge* value to this variable so we're sure it will be updated at least once. Let's put this value at `float("+inf")`, which basically represents infinity, ensuring every value is lower than this one.
+`2.1.3-1` Now all we have to do is to finally solve part one! We need, for each input seed, to compute its location, and then return the location with the lowest value. To do so we'll create a variable named `min_location` that, for each iteration, will keep the lowest location we've seen so far, being updated if we find a location with a lower value than the current minimal location. To begin with, we'll assign a *huge* value to this variable so we're sure it will be updated at least once. Let's put this value at `float("+inf")`, which basically represents infinity, ensuring every value is lower than this one. The function `min` returns the minimum value from the inputs.
 
 ```python
 min_value = float("+inf")
@@ -696,7 +690,7 @@ for seed in seeds:
 print(min_value)
 ```
 
-And voilà! When we run the code, for the sample input we get `35`, which is the answer we expected! Let's do the same for the real input: yes, `38####265` is the right answer! Congrats, now let's do part two!
+`2.1.3-2` And voilà! When we run the code, for the sample input we get `35`, which is the answer we expected! Let's do the same for the real input: yes, `38####265` is the right answer! Congrats, now let's do part two!
 
 | ![The process of finding the minimum value](../images/generation/part_1/r_finding_minimum.gif) |
 |:-:|
@@ -708,192 +702,278 @@ And voilà! When we run the code, for the sample input we get `35`, which is the
 
 ### 2.2 - The Second part of the problem
 
-Our character discovers that the number of seeds we tested is too low: The first line of our input describes *ranges* of seed numbers. The values come in pairs, the first of which describes the **start** number, and the second the **length** of the range. So in our example, `79 14 55 13` means we'll have to test two ranges of seeds, the first one starting at `79` and having `14` seeds, so the seeds `79, 80, ..., 91, 92` and the second starting at `55` and having `13` seeds, `55, 56, ..., 66, 67`. Instead of four seed numbers, we have to test 14+13=27 seed numbers.
+`2.2-1` Our character discovers that the number of seeds we tested is too low: The first line of our input actually describes *ranges* of seed numbers. The values come in pairs, the first of which describes the **start** number, and the second the **length** of the range. So in our example, `79 14 55 13` means we'll have to test two ranges of seeds, the first one starting at `79` and having `14` seeds, so the seeds `79, 80, ..., 91, 92` and the second starting at `55` and having `13` seeds, `55, 56, ..., 66, 67`. Instead of four seed numbers, we have to test 14+13=27 seed numbers.
 
 #### 2.2.1 - Naive approach
 
-All we have to do is to change the import, instead of reading the seed number one by one, we'll read them two by two, and instead of adding one seed number to our total, we'll add a `range` object, which is an iterator allowing us to write stuff like:
+`2.2.1-1` All we have to do is to change the import, instead of reading the seed numbers one by one, we'll read them two by two, and instead of adding one seed number to our seed list, we'll add a `range` object. In Python, `range(n)` represents the discrete interval $⟦0, n⟦$ open on the right. (Here the double square brackets represent an interval of integers, not real numbers). If we want to create the closed integer interval $⟦a, b⟧$ in Python, we have to write `range(a, b+1)` since $⟦a, b+1⟦ = ⟦a, b⟧$. (the discrete interval a, b+1 open on the right is equal to the closed discrete interval a, b) We can then iterate through the `range` iterator using the `for ... in ...` syntax we've seen before. For instance, here, `print` will be called on the value 3, 4, 5 and 6.
 
 ```python
-for i in range(10):
-    do_something(i)
+for i in range(3, 7):
+    print(i)
 ```
 
-So `do_something` will be called on the value 0, then 1, and so on up to 9. In Python, `range(n)` represents the discrete interval $⟦0, n⟦$. If we want to create the range $⟦a, b⟧$ we have to write `range(a, b+1)` since $⟦a, b+1⟦ = ⟦a, b⟧$.
-
-So let's modify our main program, instead of calling `compute_location_from_seed` for each seed we have, we'll iterate through our `seed_ranges`, and for every range we've created we'll iterate through it, and call `compute_location_from_seed` on every seed of the range.
+`2.2.1-2` Let's change the way we import the data. The intermediate function list doesn't change, but instead of a list named `seeds`, we create a list named `seed_ranges` containing the ranges.
 
 ```python
-min_value = float("+inf")
-for r in seed_ranges:
-    for seed in r:
-        value = compute_location_from_seed(seed)
-        min_value = min(min_value, value)
+for seed_range in seed_ranges:
+    print(seed_range)
+# range(79, 93)
+# range(55, 68)
+```
+
+`2.2.1-3` Here's the actual code if you're interested.
+
+```python
+seed_ranges: list[range] = []
+intermediate_functions: list[IntermediateFunction] = []
+
+
+with open("input.txt", "r") as file:
+    seeds_str, *maps = file.read().strip().split("\n\n")
+    seeds = seeds_str.split(":")[1].strip().split(" ")
+    for start, length in zip(seeds[::2], seeds[1::2]):
+        start = int(start)
+        length = int(length)
+        seed_ranges.append(range(start, start + length))
+    for chunk in maps:
+        chunk = chunk.split("\n")[1:]
+        shifters = [Shifter(*[int(p) for p in params.split(" ")]) for params in chunk]
+        intermediate_functions.append(IntermediateFunction(shifters))
+```
+
+`2.2.1-4` So let's modify our main program, we'll iterate through our `seed_ranges`, and for every range we've created we'll iterate through it, and call `compute_location_from_seed` on every seed of the range. We update the minimum location, as we've done before.
+
+```python
+min_location = float("+inf")
+for seed_range in seed_ranges:
+    for seed in seed_range:
+        location = compute_location_from_seed(seed)
+        min_location = min(min_location, location)
 ```
 
 When we do that on the test input and `print` the minimum value, we also find `46` which is the correct answer for the dummy input! Being confident, let's find the real answer on the real data set.
 
 ![What we would like to happen](../images/generation/part_1/r_all_trajectories.gif)
 
-Well... Nothing happens... Why? Wait, it has not crashed or something, it's still running. Let's visualize where it is by adding progression bars. Ouch it's slow! In fact, there are 1 699 478 662 seeds to process. In the first part, there were only 20 seeds. The computation is too fast for us to measure how much time is needed, but if we do 1000 times the first computation, we find that on average it takes 296.875 µs on my machine to do the 20 seeds. If we do a basic rule of three and express the result in terms of hours instead of seconds we find that for part two it would take...
-
-```python
->>> print((0.000296875 * 1699478662 / 20) / 3600)
-7.007398996961806
-```
-
-About 7 hours! That is... way too much time. We could use random seed numbers instead of doing multiple times the very same to get a more precise result, but the order of magnitude would be the same. Solving the problem in this way would take a long time for sure.
+`2.2.1-5` Well... Nothing happens... Why? Wait, it has not crashed or something, it's still running. Let's visualize where it is by adding progression bars. Ouch it's slow! In fact, there are 1 699 478 662 seeds to process. In the first part, there were only 20 seeds. Based on the number of seeds we can process per second, it should take more than four hours... That is way too long for this video.
 
 #### 2.2.2 - Complexity
 
-As we just saw, the same algorithm (for each seed number, compute the location number and keep in mind which one was the lowest) can crunch the numbers really fast for the first part, but is way too slow for the second part. Why? We just *scaled up* the *number of seeds* of the problem. We went from $20$ seeds to more than $10^9$.
+`2.2.2-1` As we just saw, the same algorithm (which is: for each seed number, compute the location number and keep in mind which one was the lowest) can crunch the numbers really fast for the first part, but is way too slow for the second part. Why? We just *scaled up* the *number of seeds* of the problem. We went from $20$ seeds to more than $10^9$.
+
+---
+
+---
 
 ##### 2.2.2.1 - What is complexity?
 
-In computer science, problems have *sizes*, for instance the amount of number one wants to find the minimum of, the length of the table one wants to sort, or the number of points one wants to find the shorter path from, or the number of words a dictionary has when one wants to find a definition for a given word. Intuitively, we understand it's easier to find the minimum of two numbers versus the minimum of one hundred numbers, it's easier to sort a list of 3 numbers versus a list of one billion ; it's easier to find the shortest path between four points versus 15 ; it's easier to find a word in a dictionary of 10 words versus a dictionary of ten of thousands words. Here, the size was the number of seeds.
+`2.2.2.1-1` In computer science, problems have a *size*. For instance:
 
-Okay. But *how much easier* is it? Can we *quantify* how easy it is for an algorithm to solve a problem? Yes! Enters **complexity**.
+- If you want to find the minimum of a list, the size of the problem is the length of that list,
+<!-- - If you have a list of objects you want to sort, the size of the problem is the number of objects you have, -->
+- If you want to find the shortest path allowing you to visit every city you have in mind, the size of the problem is the number of cities you think of,
+- If you want to find the definition of a given word in a dictionary, the size of the problem is the number of words your dictionary contains.
 
-There are mostly two things we may want to measure when writing an algorithm to solve a given problem: How much *time* it will take before ending (and hopefully give a solution) and how much *space* is needed, which is the memory required by the program. They are called, well, **time complexity** and **spatial complexity** and yes, you could say you're a computer scientist performing *space-time analysis* and earn two points of charisma even though all you want to do is 1. know if your program will stop one day and if possible not after the end of the universe, and 2. know if you have enough RAM or disk space to run your piece of code.
+`2.2.2.1-2` For a given problem and a given algorithm solving that problem, the size of the problem is a measure of the size of the input data. In our problem we gave seeds to our algorithm. So, the size was the number of seeds.
 
-Even though *space complexity* is truly interesting, we will not really focus on it for this video. In fact, as opposed to *time complexity*, it's quite hard today (at least on computers and not on small embedded systems) to need a tremendous amount of space. When computer science began to be a thing and punched cards were the only thing you had to store information, yeah, one had to be extremely careful with the spatial needs of the program. But nowadays, your algo needs 1000Go and you only have 500? You buy a second hard drive and call it a day. Now, if your algo takes 1000 years to complete, even if you buy a computer that can perform twice as fast, you still have to wait 500 years, which might be a bit too long. We won't discuss about how "times were better" and that "computer scientist now cannot write efficient code", but will focus on how to deal with time complexity.
+Intuitively, we understand:
 
-Time complexity isn't about measuring precisely how much time is required for the algo, since it does depend on a lot of factors, such as the programming language you're using, the machine you're on, and even on the same machine, as a computer is doing a lot of things at the same time you could have different results. In fact, when doing time complexity we focus on *how much operations* are needed for the algorithm to complete, and we roughly state that all computer operations are the same. Even though you may intuitively feel that it's "easier" to perform an addition between two numbers compared to divide two numbers, for a human or a computer.
+- It's easier to find the minimum of two numbers versus the minimum of one hundred numbers,
+<!-- - It's easier to sort a list of three numbers versus a list of one billion, -->
+- It's easier to find the shortest path between four points versus fifteen,
+- It's easier to find a word in a dictionary of ten words versus a dictionary of ten thousand words.
+- And for us, it is easier to compute the location of 20 seed numbers, versus one billion seed numbers...
 
-For instance, let suppose we have $\mathbf{a}$, a $n$-dimensional vector, $\mathbf{a}=[a_1, a_2, a_3, \cdots, a_n]$ and we want to compute $|\mathbf{a}|$ the norm of the vector, which is the square root of the sum of all the components squared: $\sqrt{a_1^2 + a_2^2 + a_3^2 + \cdots + a_n^2}$. If we were to write a python code to do so, we could first compute the components squared, sum everything and then return the final square root:
+`2.2.2.1-3` Okay. But *how much easier* is it? Can we *quantify* how easy it is for an algorithm to solve a problem? Yes! Enters **complexity**.
 
-```python
-def norm(vector: list[float]) -> float:
-    # 1. Create a list named `vector_sq` being the squares of a's components
-    vector_sq = []
-    for c in vector:
-        vector_sq.append(c * c)
-    # 2. Sum everything in a variable named `total`
-    total = 0
-    for c_sq in vector_sq:
-        total += c_sq
-    # 3. Compute the square root of `total` and return the result
-    return sqrt(total)
-```
+There are mostly two things we may want to measure when writing an algorithm to solve a given problem: How much *time* it will take before ending (and hopefully give a solution) and how much *space* is needed, which is the memory required by the program. They are called, well, **time complexity** and **spatial complexity** and yes, you could say you're a computer scientist performing *space-time analysis* and earn two points of charisma even though all you want to do is
+1. know if your program will stop one day and if possible not after the end of the universe, and
+2. know if you have enough RAM or disk space to run your piece of code.
 
-As we can see, what changes the number of instruction that are to be performed is the length of our list `a`, which is the dimension $n$ of our vector. If we count how many operations there is, we can see that:
+`2.2.2.1-4` Even though *space complexity* is truly interesting, we will not really focus on it for this video.
+In fact, as opposed to *time complexity*, it's quite hard today to need a tremendous amount of space for simple puzzles. When computer science began to be a thing and punched cards were the only thing you had to store information, yeah, one had to be extremely careful with the spatial needs of the program. But nowadays, your algo needs 1000 GB and you only have 500? You buy a second hard drive and call it a day. On the other hand, as we've seen, there's a huge difference between the problem being solved in less than a second versus being solved in more than four hours...
+<!-- We won't discuss about how "times were better" or "computer scientists now cannot write efficient code", but instead we will focus on how to deal with time complexity. -->
 
-1. We create a new empty list named `vector_sq`,
-2. For every element `c` of `vector`:
-    1. We compute `c` × `c`
-    2. We append the result to `vector_sq`
-3. We create a new variable `total` of value 0,
-4. For every component `c_sq` of `vector_sq`:
-    1. We add that to `total`
-5. We compute the square root of this total and return it.
+`2.2.2.1-5` Time complexity isn't about measuring precisely how much time is required for the algo, since it does depend on a lot of factors, such as the programming language you're using, the machine you're on, how busy your computer is, and so on. In fact, when doing time complexity we focus on *how many operations* are needed for the algorithm to give a result, and we roughly state that all computer operations are the same, even though you may intuitively feel that it's "easier" to add two numbers than to divide them, for a human or a computer.
 
-Lets count the operations:
+Time complexity analysis allows us to **classify algorithms** according to how their run time evolves as the size of the input set gets higher.
 
-1. Do it once
-2. Do that $n$ time:
-    1. Computation
-    2. Append the result to a list
-3. Do it once
-4. Do that $n$ time:
-    1. Computation
-5. Computation
+###### 2.2.2.1.1 - Examples
 
-So for a list `a` of size $n$, we always perform $1+n\times(1+1)+1+n+1 = 3n+3$ operations.
+`2.2.2.1.1-1` It's time for some examples. Let's consider a list of $n$ integers. Let's create three problems whose input is our list of size $n$. We'll create three functions to solve them using only the tools we've seen so far.
 
-When we express complexity we do not quite care about the exact number of operation though, we want to express an estimation of how the total number of operation based on the problem size. And since it would be really fast for small values of $n$, we want to focus on big values of $n$. Here, the most significant part are not the operations that happen only once for a given call to that function, but rather what happens during the `for` loop. In fact, we don't really care if that for each element we have to do one or two operations, what we do care is that for each element of the loop we do an operation. 
+- First, let's create a function returning one plus the third value of our list (we assume the list has at least three numbers),
+- Then, let's create a function to find the minimum of our list,
+- Finally, let's create a function to write the multiplication table of our list, that is $a\times b$ for every $a$ and $b$ in our list.
 
-Let introduce the "big O notation". If $f$ and $g$ are both functions of $n$, we say " $f$ is big O of $g$ " if there's a value $n_0$ big enough such that for every $n$ greater than this $n_0$ we have $f(n)\leq K\cdot g(n)$ where $K$ is a positive constant. Written more mathematically, it reads:
+###### 2.2.2.1.1.1 - The Third Value
 
-$$f=O(g)\Longleftrightarrow\exists n_0\geq 0,\exists K>0,\forall n\geq n_0, f(n)\leq K\cdot g(n)$$
-
-(As a side note, here we will write $f=O(g)$ and not $f\in O(g)$ even though we say "f is big O of g" as it's the way it's usually written in computer science, even though one may argue it's mathematically inaccurate.)
-
-An interesting property here is it allows us to only encode what matters the most in our algorithms. Here we have $f(n)=3n+3$, which is the number of operations we counted, but we can write $f=O(n)$ since we can find for instance $K=4$ and $n_0=3$. That allows us to focus not on the few operations done without respect to $n$, and to know that for a given $n$ the time taken is roughly *linear* according to $n$. Thus, if an algo does $5n$ operations or $6n$ operations we do not care, since we don't really know for sure how much time is taken by the computer to perform one operation, and that might sometimes depend on the architecture of our computer. What we want to know is the time taken is linear with respect to $n$, and we state these two algo have the same time complexity.
-
-Another interesting property is that the big $O$ notation focuses on the component that grows up the fastest. That would be the "worst" component for us, the one that takes the most time. For instance, if we have an algorithm that takes exactly $f(n) = 3n + 6 + \log_2(n) + \frac{n^2}{2}$ steps to complete, what matters the most is the $n^2$ part since that is the function that grows the fastest. We can thus find $K$ and $n_0$ and write $f=O(n^2)$. That allows us to easily compare algorithm and their performances as we can map them to a simple function behaving like them when $n$ is big. We'll come back on that later.
-
-Here we saw our function had a time complexity of $O(n)$, which means there is a kind of proportionality between the size of the problem and the amount of time required to solve it: If another vector `b` is twice as big as our first vector `a`, it will take roughly twice as much time, and so on. A *linear complexity* is actually a quite common complexity, the kind of complexity you would expect in tasks involving iterating through all elements of a list: to find the minimum value of a list, you have to process all the $n$ element, so you cannot reduce that complexity.
-
-In our example, the *spatial* complexity is influenced too by the size of our problem. You always create a single list named `vector_sq` that has $n$ elements and a variable named `total`. There is also is an unnamed temporary variable storing `c`×`c` before adding it to `total`. So, for an input list `a` of size $n$, there are $n+1+1=n+2$ slots that are needed for our program to run. Once again, the important parts are not the two extra slots, but that the size required grows roughly proportionally with the size of our problem. So the *spatial complexity* is linear, noted once again $O(n)$.
-
-Now, we could have written this code a bit differently, like we did to find the minimum value of our locations numbers:
+`2.2.2.1.1.1-1` To solve the first problem, it's easy: we iterate through our list, and keep in a dedicated variable `current_index` the index of the number we're on. If our index is 3, we add one to the current number and return the result.
 
 ```python
-def norm(vector: list[float]) -> float:
-    total = 0
-    for c in vector:
-        total += c * c
-    return sqrt(total)
+def find_the_third_value_plus_one(numbers: list[int]) -> int:
+    current_index = 0
+    for number in numbers:
+        current_index = current_index + 1
+        if current_index == 3:
+            return number + 1
 ```
 
-Now, we first create a variable named `total` and for every element `c` of our `vector`, we add the squared value to `total`. Then we compute the square root. So here, there's no need to store all the squares in a vector since we add them directly to `total`. So, if our list `vector` has a size of $n$, we will only use two memory slots: one to store the `total` value, and an unnamed temporary variable holding the value of `c` × `c` like before. Thus, there is a *constant* number of space that is not influenced by the size of the problem. Like before, if you always only use one memory slot or you only use two, if it is not influenced by the size of the problem it is regarded as the same behavior, i.e. a constant complexity, that we would write $O(1)$. For our standards, that make our second version a bit better as it has the same *linear time complexity*, but has a *constant space complexity*.
- 
-Non-trivial tasks seldom have $O(1)$ time complexity, as it doesn't depend at all on the problem's size. For instance returning the first element of a list has a constant complexity, but it is a bit uninteresting as an algorithm...
+`2.2.2.1.1.1-2` Let's count the number of operations we performed:
 
-On the contrary, some problems might nest multiple loops. Suppose you want to write the multiplication tables for all integers between 1 and $n$. We can write:
+- We create a new variable, `current_index`
+- Then we iterate through all numbers using a `for` loop. For each iteration:
+  - We add one to the variable `current_index`
+  - We check if `current_index` is equal to 3. If it is:
+    - We add one to number and return this value.
+
+`2.2.2.1.1.1-3` So in fact, the size of the problem doesn't matter here: what is inside the `for` loop will be executed exactly three times, our variable `current_index` being 1, then 2, then 3 and then we return. So we have:
+
+- 1 operation : the creation of the variable
+- 2 operations (adding one to `current_index` and checking if it is equal to 3) that we will do three times
+- 1 operation, adding one to the current number
+
+Thus, for any list of size $n$, we always perform $8$ operations.
+
+<!--
+(`2.2.2.1.1.1-4?` And yes, the function could have been written like so:)
 
 ```python
-def write_multiplication_table(N: int) -> None:
-    for i in range(1, N + 1):
-        for j in range(1, N + 1):
-            p = i * j
-            print(f"{i}×{j} = {p}")
+def find_the_third_value_plus_one(numbers: list[int]) -> int:
+    return numbers[3] + 1
 ```
+-->
 
-So if we plug in $5$, we got our 25 lines printed. Basically, we're doing the printing $n$ times, for every value of `j` in the range $⟦1, n⟧$, and we're doing that $n$ times, for every value of `i` in the range $⟦1, n⟧$. So we do have a time complexity of $n^2$, that we do note, you guessed it, $O(n^2)$ and we say that our function's complexity is *quadratic*.
+###### 2.2.2.1.1.2 - The minimum of the list
 
-Now, you may say that every pair of i and j where i and j are different are shown twice, and since the multiplication is a commutative operation for the real numbers, that is $\forall(a,b)\in\mathbb{R}^2,\; a\times b = b\times a$, we could reduce the number of operations! You'd be absolutely right.
-
-![Multiplication table without doublons](../images/other_visuals/grid.svg)
-
-What we want could be only the lowest part of our grid, and the diagonal. That would roughly cut in half the number of iterations. We can see that for every $i$, we want $j$ not to be greater than $i$, so every couple $(i,j)$ is shown only once, where $i \geq j$. So let's modify our second loop:
+`2.2.2.1.1.2-1` Let's now compute the minimum of a list. We've seen this one before! We just need to keep in mind the lowest value we've seen so far, and update it when iterating through our list.
 
 ```python
-def write_multiplication_table(N: int) -> None:
-    for i in range(1, N + 1):
-        for j in range(1, i + 1):  # <- modification here
-            p = i * j
-            print(f"{i}×{j} = {p}")
+def find_the_lowest_number(numbers: list[int]) -> int:
+    lowest_value_so_far = float("+inf")
+    for nb in numbers:
+        lowest_value_so_far = min(lowest_value_so_far, nb)
+    return lowest_value_so_far
 ```
 
-Let's find out how many operation there are now.
+`2.2.2.1.1.2-2` Let's count the number of operations:
 
-- First, $i$ is $1$:
-  - $j$ can be $1$.
-- Then, $i$ is $2$:
-  - $j$ can be $1$.
-  - $j$ can be $2$.
-- Then, $i$ is $3$:
-  - $j$ can be $1$.
-  - $j$ can be $2$.
-  - $j$ can be $3$.
-- ...
-- Lastly, $i$ is $n$:
-  - $j$ can have $n$ values.
+- We create a variable `lowest_value_so_far`
+- For every element of our list:
+  - We compute the `min` between the current number and the `lowest_value_so_far`,
+  - We update the variable with whatever the result of that computation is. As we can see, there is not a 1:1 correlation between an operation and a line of code. We have to remain attentive!
+- After the `for` loop, there is no more computation to do, `lowest_value_so_far` stores what we wanted.
 
-So, basically, for an input n, we have $1 + 2 + 3 + \cdots + n$ computing and printing. As we saw, even if there is multiple operation in the "compute and print" block, the number of operation does not depend on $n$, so it's computable in $O(1)$ and thus behaves like one single operation. That sum can be seen as the half of a rectangle of sides $n$ and $n+1$, so at the end we have $\dfrac{n\cdot(n+1)}{2}$ operations. When $n$ goes higher and higher, $n^2$ is way much bigger than $n$, so once again $\frac{n^2}{2}$ is what matters ; as we expected we roughly divided by two our operation count, which was expected since we split a square into a triangle. But the final number of operation still depends on $n^2$. So even if we do have less operations to perform, the *time complexity* is **still** quadratic, and the two examples have the same complexity.
+So, since we do one initial operation and then two operations for every number from our list, in total that's $1 + 2\times n$ operations for a list of size $n$.
 
-If we have two computer A and B, B being twice as fast as A, for a given $n$, A would take roughly the same amount of time doing the triangular grid as B doing the square one. But if we double $n$, any of these computer would take not twice as much time as they would with our initial $n$, but $2^2$ which is 4. You triple the input, it takes nine times more time.
+###### 2.2.2.1.1.3 - Multiplication Table
 
-So even though of course better computers yield better results, understanding how complex an algorithm is helps to understand how the time required to perform a task *scales* when the problem's size changes.
+`2.2.2.1.1.3-1` To print the multiplication table of a list of numbers, we want to print on the screen $a\times b$ for every $a$ of the list, for every $b$ of the list. So we'll nest two `for` loops:
 
-##### 2.2.2.2 - Finding the complexity of our algorithm
+```python
+def print_multiplication_table(numbers: list[int]) -> int:
+    for a in numbers:
+        for b in numbers:
+            ab = a * b
+            print(a, "x", b, "=", ab)
+```
 
-###### 2.2.2.2.1 - On parallelization
+(We can print more than one variable by separating them using commas in the `print` function.)
 
-In this video, we'll only talk about a computer being able to do only one task at a time. Certain problems, like this one in fact, can be solved faster by using multiple processes working together simultaneously. For instance, for the function computing the norm of a vector, we said the version with a *constant space complexity* was better than the one with a *linear spatial complexity*? Well, that could have been a lie. In a theoretical world, for a vector of length $n$, let's suppose we also have $n$ workers able to work simultaneously, in only time unit they can all perform the squaring. That would still be $n$ operations, but done in only one instant. And it would take $n$ slots of memory at the same time. And to add the numbers we could add every pair of numbers in parallel and repeat until all number are added. That would take at most $k$ operation, where $k$ is the smallest number such as $2^k\geq n$. So we have an algorithm that take roughly $k$ operations, where $k$ is the logarithm in base two of $n$. Since logarithms of all bases are all proportional we don't even bother write the base. So even though there still was a *linear* number of operations to do, they were done in an *logarithmic* number of time. This kind of approach works well when the input is a list of element that won't interact. You can divide the problem into smaller problems, again and again and parallelize the computation.
+`2.2.2.1.1.3-1` The first loop will be executed once per number `a` in our list, so $n$ times in total. For the same reason, the second loop will be executed $n$ times, one per value `b`, but that is $n$ times for each number `a`. So we enter the body of the second `for` loop $n^2$ times. And the body of that second loop contains two instructions, so that's two instructions for every `b` for every `a`, so in total we have $2n^2$ instructions for a list of size $n$.
 
-So, here for instance, we could divide all our seeds into 700 lists, give that to 700 computers, they would all find their minimum location, then comparing 700 numbers to find the real minimum is a piece of cake but even that we could parallelize, and in less than one minute it would spit the solution. But we won't do that as it feels like cheating to me to bring out the big guns to solve a coding problem, and I don't own yet 700 computers. So our optimization will be focused on solving the problem doing only one operation at a time, like we would do by hand, just a bazillion times slower.
+###### 2.2.2.1.2 - Formalization
 
-###### 2.2.2.2.2 - On other measures of algorithmic complexity
+`2.2.2.1.2-1` So, what was the point of all this? Well, when we counted the number of operations we found that for a given problem of size $n$, the first algorithm had a constant number of operations, the second had $a + bn$ operations, where $a$ and $b$ are two positive integers, and the third had $a + bn + cn^2$ operations, where $a$, $b$ and $c$ are three positive integers. For a modern computer, for small numbers $n$ it doesn't make a difference, as computers do many, many operations per second. But when $n$ becomes bigger and bigger, it starts to make a difference.
 
-Like we have *instances* for our classes, let's call *instances* of a problem a given input for a problem. As an example, `[1, 2, 3, 4]` and `[4, 1, 3, 2]` are two different instances of the same size for an algorithm sorting a list of numbers. An important thing to note is that for two instances of a problem with the same size $n$, the same algorithm may do a different number of operations. If we come back to our two lists that are to be sorted, for most efficient sorting algorithms, the first step is to see how shuffled the list is, and then sort the shuffled parts. So on the first list, the algo would read all numbers, see that the list is already sorted and thus terminate. That would have taken a linear amount of operation (reading every number a constant number of time) so the complexity is related to $n$. On the other hand, our same algo would then sort the second list, and that would take roughly $n^2$ operations if our algo is inefficient, and $n\log(n)$ if we're a bit clever in the writing of our algorithm. So here, we have a kind of "best case scenario". It may be interesting to also provide information on how well the algo performs in the best case. As we saw, saying that our algo is in $O(f)$ means that for large numbers $n$, our algo does less operations than $f(n)$ times a constant. We do have an upper bound, saying that in the worst case our algo won't do worse than $f$ times a constant for inputs with large sizes.
+```
+TODO GeoGebra
+```
 
-The worst case scenario is quite every time a better indication than the best case scenario, not because we computer scientists are pessimistic persons, but because it allows us to quickly know for a given size when we can expect an algorithm to have stopped.
+We start to understand that, according to how their number of operations are expressed in terms of $n$, these three functions would be classified differently, and have different time complexity.
 
-Other measures exists, though. There is for instance the *average* complexity, harder to compute, that indicates on average how many operations are expected. For some problems, we can have worst case scenario in $O(n^3)$ which is really bad for huge numbers, but know that on average the time complexity is $O(n)$ so in most cases the algorithm is usable for big tasks. When a task is repeated a lot, we can measure on a set of instances another kind of average complexity. All these indicators can help us understand an algorithm's complexity. In this video, already too long, we'll only focus on the $O$ notation.
+`2.2.2.1.2-2` When we express complexity we do not quite care about the exact number of operations, we want to express an estimation of how the total number of operations based on the problem size to classify the algorithms. And since it would be really fast for small values of $n$, we want to focus on big values of $n$.
 
-###### 2.2.2.2.3 - Finding the complexity of our algorithm (for real)
+`2.2.2.1.2-3` In fact, we can intuitively feel that if we have a constant number of operations, one more or one less doesn't make a difference. If you have a faster computer, a higher but still constant number of operations doesn't matter as the numbers would still be crushed in no time. It's just like we had one unique big operation.
+
+`2.2.2.1.2-4` In the second function, we have $a + bn$ operations, where $a$ is 1 and $b$ is 2. Even if $b$ was only 1, the value of $a$ being unrelated to $n$ ends up being insignificant compared to the total number of operations when $n$ goes high. What matters in that function, is what happens in the `for` loop, being responsible for the $2n$ operations, not the extra operation where we declare `lowest_value_so_far` and say it has a huge value. And like we said just before, here the value of $b$ doesn't matter, since a faster computer could crunch the numbers faster, or a better version of the algorithm would lower that value $b$. But that family of algorithm still depends on $n$, and there is a kind of proportional nature between the number of operations and $n$.
+
+`2.2.2.1.2-5` In the third example, we have $a + bn + cn^2$ operations, and we can see likewise that what matters the most is the $n^2$ part, since $a$ and $bn$ become insignificant when $n$ goes high. And, like before, what's important is not the number $c$, but the link between the number of operations and $n^2$.
+
+|   $bn$ and $a$ become insignificant compared to $n^2$   |
+|---------------------------------------------------------|
+| ![Quadratic Complexity](../images/other_visuals/quadratic_complexity.gif) |
+
+`2.2.2.1.2-6` Let introduce the "big O notation". It is one of the most important tool in computer science when it comes to expressing the complexity of an algorithm. If $f$ and $g$ are two functions taking an integer as an input, and outputting another integer, we say " $f$ is big O of $g$ " if there's a value $n_0$ big enough such that for every $n$ greater than this $n_0$ we have $f(n)\leq K\cdot g(n)$ where $K$ is a non-zero positive constant. (Written more mathematically, it reads:)
+
+$$f=O(g)\Longleftrightarrow\exists n_0\in\mathbb{N},\exists K\in\mathbb{R}_+^*,\forall n\in\mathbb{N},\; n\geq n_0 \Rightarrow f(n)\leq K\cdot g(n)$$
+
+`2.2.2.1.2-7` (As a side note, here we will write $f=O(g)$ and not $f\in O(g)$ even though we say "f is big O of g" as it's the way it's usually written in computer science, even though one may argue it's mathematically inaccurate to use the equal sign.)
+
+`2.2.2.1.2-8` The "big O notation" allows us to express the complexity in terms of the component that grows the faster, discarding what matters less. For instance, let's call $p_1$, $p_2$ and $p_3$ the three functions expressing the exact number of operations for the problems 1, 2 and 3 depending on the length of the input list. For a list of length $n$, we have:
+
+- $p_1(n) = 8$
+- $p_2(n) = 1+2n$
+- $p_3(n) = 2n^2$
+
+`2.2.2.1.2-9` For $p_1$, we can find the function $g$ such that $g(n) = 1$ no matter what $n$ is, the constant $n_0=0$ and the constant $K=8$. So, for every $n$ we do have $p_1(n) \leq K\cdot g(n)$ and we can write $p_1 = O(1)$. We say $O(1)$ algorithms have **constant** complexity.
+
+It is important to understand all $O(1)$ algorithms don't have necessarily a constant number of operations. It only means you can find a *constant number* whose value is always greater or equal than the number of operations. For instance, if $p_1(n)$ was 8 or 10 depending on $n$, we could find a number $K=10$ for instance such that $p_1(n)\leq K$ and thus still say our first function has a *constant complexity*.
+
+```
+TODO GeoGebra
+```
+
+`2.2.2.1.2-10` For $p_2$, it goes the same. Lets say:
+
+```
+TODO GeoGebra
+```
+
+- $g(n) = n$
+- $n_0 = 1$
+- $K = 1$
+
+And we now have $p_2 = O(n)$. We say this algorithm has a **linear** complexity.
+
+`2.2.2.1.2-11` And finally, for $p_2$, we can say:
+
+```
+TODO GeoGebra
+```
+
+- $g(n) = n^2$
+- $n_0 = 1$
+- $K = 2$
+
+And we have $p_3 = O(n^2)$, that is a **quadratic** complexity.
+
+`2.2.2.1.2-12` Here, our three problems had polynomial complexity, of degree 0, 1 and 2, but we can find problems whose complexity involves more exotic functions, such as the factorial or the logarithm for instance.
+
+##### 2.2.2.2 - Other ways to express complexity
+
+###### 2.2.2.2.1 - On other measures of algorithmic complexity
+
+`2.2.2.2.1-0` The big O notation isn't the only tool computer scientists have in their toolbox. There are other ways to measure the algorithmic complexity of a program.
+
+`2.2.2.2.1-1` Like we have *instances* for our classes, let's call *instances* of a problem a given input for a problem. As an example, `[1, 2, 3, 4]` and `[4, 1, 3, 2]` are two different instances of the same size for an algorithm sorting a list of numbers. An important thing to have in mind is that for two instances of a problem with the same size $n$, the same algorithm may do a different exact number of operations. For our two lists that are to be sorted, for most efficient sorting algorithms, the first step is to see how shuffled the list is, and then sort the shuffled parts. So on the first list, the algo would read all numbers, see that the list is already sorted and thus terminate. That would have taken a linear amount of operation (reading every number a constant number of time) so the complexity of sorting an already sorted list is related to $n$. On the other hand, our same algo would then sort the second list, and that would take roughly $n^2$ operations if our algo is inefficient, and $n\log(n)$ if we're a bit clever in the writing of our algorithm. So here, we have a kind of "best case scenario". It may be interesting to also provide information on how well the algo performs in the best case. As we saw, saying that our algo is in $O(f)$ means that for large numbers $n$, our algo does less operations than $f(n)$ times a constant. So we do have an upper bound, saying that in the worst case our algo won't do worse than $f$ times a constant for inputs with large sizes, but we don't express a lower bound here. In fact, the big O notation is a kind of metric for the worst case scenario.
+
+`2.2.2.2.1-2` The worst case scenario is quite every time a better indication than the best case scenario, not because we computer scientists are pessimistic persons, but because it allows us to quickly know for a given size when we can expect an algorithm to have stopped.
+
+`2.2.2.2.1-3` And of course, there are other complexity measures. There is for instance the *average* complexity, harder to compute, that indicates on average how many operations are expected. For some problems, we can have worst case scenario in $O(n^3)$ which is really bad for huge numbers, but know that on average the time complexity is $O(n)$ so in most cases the algorithm is usable for big tasks. When a task is repeated a lot, we can measure on a set of instances another kind of average complexity. All these indicators can help us understand an algorithm's complexity. In this video, already too long, we'll only focus on the $O$ notation.
+
+###### 2.2.2.2.2 - On parallelization
+
+`2.2.2.2.2-1` In this video, we'll only talk about a computer being able to do only one task at a time. Some problems, like this one in fact, can be solved faster by using multiple processes working together simultaneously. We could divide all our seed numbers let say into 100 lists, give that to 100 computers, they would all find their minimum location, then comparing 100 numbers to find the real minimum is a piece of cake but even that we could parallelize, and in less than one minute it would give the solution. But we won't do that as it feels like cheating to me to bring out the big guns to solve a coding challenge, and I don't own 100 computers nor do I have that many friends. So our optimization will be focused on solving the problem doing only one operation at a time, like we would do by hand, just a bazillion times faster.
+
+---
+
+---
+
+---
+
+##### 2.2.2.3 - Finding the complexity of our algorithm
 
 Let's find out how efficient our algorithm is. The algorithm looks like:
 
