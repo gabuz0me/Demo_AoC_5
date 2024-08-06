@@ -1,4 +1,4 @@
-Version 4
+Version 4.5
 
 ---
 
@@ -887,9 +887,10 @@ def print_multiplication_table(numbers: list[int]) -> int:
 
 `2.2.2.1.2-1` So, what was the point of all this? Well, when we counted the number of operations we found that for a given problem of size $n$, the first algorithm had a constant number of operations, the second had $a + bn$ operations, where $a$ and $b$ are two positive integers, and the third had $a + bn + cn^2$ operations, where $a$, $b$ and $c$ are three positive integers. For a modern computer, for small numbers $n$ it doesn't make a difference, as computers do many, many operations per second. But when $n$ becomes bigger and bigger, it starts to make a difference.
 
-```
-TODO GeoGebra
-```
+| The same functions, low and high value of $n$ |
+|---|
+| ![Low](../images/other_visuals/2.2.2.1/1.1.png) |
+| ![Low](../images/other_visuals/2.2.2.1/1.2.png) |
 
 We start to understand that, according to how their number of operations are expressed in terms of $n$, these three functions would be classified differently, and have different time complexity.
 
@@ -921,33 +922,35 @@ $$f=O(g)\Longleftrightarrow\exists n_0\in\mathbb{N},\exists K\in\mathbb{R}_+^*,\
 
 It is important to understand all $O(1)$ algorithms don't have necessarily a constant number of operations. It only means you can find a *constant number* whose value is always greater or equal than the number of operations. For instance, if $p_1(n)$ was 8 or 10 depending on $n$, we could find a number $K=10$ for instance such that $p_1(n)\leq K$ and thus still say our first function has a *constant complexity*.
 
-```
-TODO GeoGebra
-```
+| A non-constant function still having a *constant complexity* |
+|---|
+| ![Constant](../images/other_visuals/2.2.2.1/9.png) |
 
 `2.2.2.1.2-10` For $p_2$, it goes the same. Lets say:
 
-```
-TODO GeoGebra
-```
-
 - $g(n) = n$
 - $n_0 = 1$
-- $K = 1$
+- $K = 3$
 
 And we now have $p_2 = O(n)$. We say this algorithm has a **linear** complexity.
 
+| A *linear complexity* |
+|---|
+| ![Linear](../images/other_visuals/2.2.2.1/10.png) |
+
 `2.2.2.1.2-11` And finally, for $p_2$, we can say:
 
-```
-TODO GeoGebra
-```
-
 - $g(n) = n^2$
-- $n_0 = 1$
-- $K = 2$
+- $n_0 = 3$
+- $K = 2.5$
 
 And we have $p_3 = O(n^2)$, that is a **quadratic** complexity.
+
+As you can see, we don't even need to find lowest value of $K$ nor the very $n_0$ where $K\cdot g(n)$ starts to be greater than our number of operations. We only need to find numbers satisfying the condition and we can state the complexity family of our algorithm.
+
+| A *quadratic complexity* |
+|---|
+| ![Linear](../images/other_visuals/2.2.2.1/11.png) |
 
 `2.2.2.1.2-12` Here, our three problems had polynomial complexity, of degree 0, 1 and 2, but we can find problems whose complexity involves more exotic functions, such as the factorial or the logarithm for instance.
 
